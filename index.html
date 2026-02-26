@@ -3,1073 +3,1480 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Salute di Ferro &mdash; Pitch Deck</title>
+    <title>Salute di Ferro &mdash; Pitch Deck 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
     <style>
-        @page { size: landscape; margin: 0; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            /* ── Backgrounds ─────────────────────────── */
+            --bg:        #07090F;
+            --surface:   #0D1420;
+            --surface-2: #121B2E;
+            --surface-3: #172136;
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            color: #e2e8f0;
-            background: #0b1120;
-            line-height: 1.6;
+            /* ── Borders ─────────────────────────────── */
+            --border:        rgba(255,255,255,0.07);
+            --border-dim:    rgba(255,255,255,0.04);
+            --border-blue:   rgba(99,102,241,0.28);
+            --border-green:  rgba(16,185,129,0.22);
+            --border-red:    rgba(239,68,68,0.22);
+            --border-amber:  rgba(245,158,11,0.22);
+
+            /* ── Brand Colors ────────────────────────── */
+            --blue:    #6366F1;
+            --blue-2:  #818CF8;
+            --blue-3:  #A5B4FC;
+            --green:   #10B981;
+            --green-2: #34D399;
+            --amber:   #F59E0B;
+            --amber-2: #FCD34D;
+            --red:     #EF4444;
+            --red-2:   #F87171;
+            --purple:  #A855F7;
+            --purple-2:#C084FC;
+            --pink:    #EC4899;
+
+            /* ── Text ────────────────────────────────── */
+            --t1: #F8FAFC;
+            --t2: #CBD5E1;
+            --t3: #64748B;
+            --t4: #2D3F58;
+
+            /* ── Radii ───────────────────────────────── */
+            --r-sm: 8px;
+            --r:    14px;
+            --r-lg: 20px;
         }
 
+        @page { size: landscape; margin: 0; }
+
+        *, *::before, *::after {
+            margin: 0; padding: 0; box-sizing: border-box;
+        }
+
+        html {
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--t2);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ═══════════════════════════════════════════════
+           SLIDE BASE
+        ═══════════════════════════════════════════════ */
         section {
             width: 100vw;
             height: 100vh;
-            padding: 55px 75px;
+            padding: 50px 84px 42px;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            page-break-after: always;
             position: relative;
             overflow: hidden;
-            background: #0f172a;
+            scroll-snap-align: start;
         }
 
-        /* Slide number footer */
-        section .slide-footer {
+        /* ═══════════════════════════════════════════════
+           TYPOGRAPHY
+        ═══════════════════════════════════════════════ */
+        h1 {
+            font-size: 4.6em;
+            font-weight: 900;
+            line-height: 1.02;
+            color: var(--t1);
+            letter-spacing: -0.04em;
+        }
+        h2 {
+            font-size: 2.45em;
+            font-weight: 700;
+            line-height: 1.1;
+            color: var(--t1);
+            letter-spacing: -0.025em;
+        }
+        h3 {
+            font-size: 0.98em;
+            font-weight: 600;
+            color: var(--t1);
+            letter-spacing: -0.01em;
+        }
+        p {
+            font-size: 0.93em;
+            color: var(--t2);
+            line-height: 1.65;
+        }
+        p.lead {
+            font-size: 1.03em;
+            max-width: 840px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        ul li {
+            font-size: 0.87em;
+            color: var(--t2);
+            padding: 3px 0 3px 18px;
+            position: relative;
+            line-height: 1.55;
+        }
+        ul li::before {
+            content: '›';
             position: absolute;
-            bottom: 22px;
-            left: 75px;
-            right: 75px;
+            left: 0;
+            color: var(--blue-2);
+            font-weight: 700;
+            font-size: 1.1em;
+            line-height: 1.3;
+        }
+        strong { color: var(--t1); font-weight: 600; }
+
+        /* ═══════════════════════════════════════════════
+           SLIDE FOOTER
+        ═══════════════════════════════════════════════ */
+        .slide-footer {
+            position: absolute;
+            bottom: 18px;
+            left: 84px;
+            right: 84px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.75em;
-            color: #475569;
+            font-size: 0.65em;
+            font-weight: 500;
+            color: var(--t4);
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            padding-top: 9px;
+            border-top: 1px solid var(--border-dim);
         }
 
-        h1 { font-size: 3.2em; font-weight: 800; line-height: 1.15; color: #f8fafc; }
-        h2 { font-size: 2.3em; font-weight: 700; margin-bottom: 20px; color: #f1f5f9; }
-        h3 { font-size: 1.25em; font-weight: 600; margin-bottom: 8px; color: #e2e8f0; }
-        p { font-size: 1.1em; color: #cbd5e1; max-width: 950px; }
-        ul { font-size: 1.05em; padding-left: 24px; color: #cbd5e1; }
-        ul li { margin-bottom: 6px; }
-        strong { color: #f1f5f9; }
-        small { font-size: 0.85em; color: #64748b; }
-
-        /* === ACCENT COLORS === */
-        .accent { color: #60a5fa; }
-        .accent-green { color: #4ade80; }
-        .accent-red { color: #f87171; }
-        .accent-amber { color: #fbbf24; }
-        .accent-purple { color: #a78bfa; }
-
-        /* === TAG / LABEL === */
+        /* ═══════════════════════════════════════════════
+           TAGS / BADGES
+        ═══════════════════════════════════════════════ */
         .tag {
-            display: inline-block;
-            padding: 4px 14px;
-            border-radius: 6px;
-            font-size: 0.75em;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-size: 0.64em;
             font-weight: 700;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
             margin-bottom: 12px;
+            width: fit-content;
         }
-        .tag-blue { background: rgba(96,165,250,0.15); color: #60a5fa; border: 1px solid rgba(96,165,250,0.3); }
-        .tag-green { background: rgba(74,222,128,0.15); color: #4ade80; border: 1px solid rgba(74,222,128,0.3); }
-        .tag-red { background: rgba(248,113,113,0.15); color: #f87171; border: 1px solid rgba(248,113,113,0.3); }
-        .tag-amber { background: rgba(251,191,36,0.15); color: #fbbf24; border: 1px solid rgba(251,191,36,0.3); }
-        .tag-purple { background: rgba(167,139,250,0.15); color: #a78bfa; border: 1px solid rgba(167,139,250,0.3); }
+        .tag::before {
+            content: '';
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .tag-blue   { background: rgba(99,102,241,0.1);  color: var(--blue-3);  border: 1px solid rgba(99,102,241,0.22);  }
+        .tag-blue::before   { background: var(--blue-2); }
+        .tag-red    { background: rgba(239,68,68,0.08);  color: #FCA5A5;        border: 1px solid rgba(239,68,68,0.18);   }
+        .tag-red::before    { background: var(--red-2); }
+        .tag-green  { background: rgba(16,185,129,0.08); color: #6EE7B7;        border: 1px solid rgba(16,185,129,0.18);  }
+        .tag-green::before  { background: var(--green-2); }
+        .tag-amber  { background: rgba(245,158,11,0.08); color: #FDE68A;        border: 1px solid rgba(245,158,11,0.18);  }
+        .tag-amber::before  { background: var(--amber-2); }
+        .tag-purple { background: rgba(168,85,247,0.08); color: #D8B4FE;        border: 1px solid rgba(168,85,247,0.18);  }
+        .tag-purple::before { background: var(--purple-2); }
 
-        /* === GRIDS === */
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 18px; }
-        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; margin-top: 18px; }
-        .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 20px; margin-top: 18px; }
+        /* ═══════════════════════════════════════════════
+           ACCENT RULE (decorative divider under h2)
+        ═══════════════════════════════════════════════ */
+        .rule {
+            width: 32px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--blue), transparent);
+            border-radius: 2px;
+            margin: 10px 0 16px;
+        }
 
-        /* === CARDS === */
+        /* ═══════════════════════════════════════════════
+           GRID LAYOUTS
+        ═══════════════════════════════════════════════ */
+        .g2 { display: grid; grid-template-columns: 1fr 1fr;           gap: 14px; }
+        .g3 { display: grid; grid-template-columns: 1fr 1fr 1fr;       gap: 14px; }
+        .g4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;   gap: 12px; }
+
+        /* ═══════════════════════════════════════════════
+           CARDS
+        ═══════════════════════════════════════════════ */
         .card {
-            background: rgba(30, 41, 59, 0.8);
-            border: 1px solid rgba(96, 165, 250, 0.2);
-            border-radius: 14px;
-            padding: 24px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--r);
+            padding: 18px 20px;
         }
-        .card h3 { font-size: 1.15em; }
-        .card p, .card ul { font-size: 0.95em; }
-
-        .card-highlight {
-            background: linear-gradient(135deg, rgba(96,165,250,0.1), rgba(59,130,246,0.05));
-            border: 1px solid rgba(96,165,250,0.35);
+        .card-glow {
+            background: linear-gradient(145deg, rgba(99,102,241,0.07) 0%, transparent 60%);
+            border-color: var(--border-blue);
         }
-
         .card-dark {
-            background: rgba(15, 23, 42, 0.9);
-            border: 1px solid rgba(71, 85, 105, 0.4);
+            background: rgba(0,0,0,0.2);
+            border-color: var(--border-dim);
+        }
+        /* top-border color variants */
+        .ct-blue   { border-top: 2px solid var(--blue);   }
+        .ct-green  { border-top: 2px solid var(--green);  }
+        .ct-red    { border-top: 2px solid var(--red);    }
+        .ct-amber  { border-top: 2px solid var(--amber);  }
+        .ct-purple { border-top: 2px solid var(--purple); }
+        .ct-pink   { border-top: 2px solid var(--pink);   }
+        .ct-blue-2 { border-top: 2px solid var(--blue-2); }
+
+        /* ═══════════════════════════════════════════════
+           STAT NUMBERS
+        ═══════════════════════════════════════════════ */
+        .stat-num {
+            font-size: 2.8em;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1;
+            color: var(--t1);
+        }
+        .stat-num.gb { /* gradient blue */
+            background: linear-gradient(135deg, var(--blue-3) 0%, var(--t1) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .stat-num.gg { /* gradient green */
+            background: linear-gradient(135deg, var(--green-2) 0%, var(--t1) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .stat-num.ga { /* gradient amber */
+            background: linear-gradient(135deg, var(--amber-2) 0%, var(--t1) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .stat-num.gr { /* gradient red */
+            background: linear-gradient(135deg, var(--red-2) 0%, #FF8A80 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .stat-label {
+            font-size: 0.7em;
+            font-weight: 600;
+            color: var(--t3);
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            margin-top: 3px;
         }
 
-        /* === COVER === */
-        .cover {
-            background: linear-gradient(160deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
-            text-align: left;
-            justify-content: flex-end;
-            padding-bottom: 100px;
-        }
-        .cover h1 { font-size: 4em; margin-bottom: 8px; }
-        .cover .subtitle { font-size: 1.35em; color: #60a5fa; font-weight: 400; margin-bottom: 30px; }
+        /* ═══════════════════════════════════════════════
+           ACCENT TEXT
+        ═══════════════════════════════════════════════ */
+        .ac-blue   { color: var(--blue-2); }
+        .ac-green  { color: var(--green-2); }
+        .ac-amber  { color: var(--amber-2); }
+        .ac-red    { color: var(--red-2); }
+        .ac-purple { color: var(--purple-2); }
+        .ac-pink   { color: var(--pink); }
 
-        /* === STAT BLOCKS === */
-        .stat { text-align: center; padding: 20px; }
-        .stat .num { font-size: 2.8em; font-weight: 800; color: #60a5fa; line-height: 1; margin-bottom: 6px; }
-        .stat .label { font-size: 0.9em; color: #94a3b8; }
-
-        /* === CALLOUT BOX === */
+        /* ═══════════════════════════════════════════════
+           CALLOUTS
+        ═══════════════════════════════════════════════ */
         .callout {
-            background: rgba(96, 165, 250, 0.08);
-            border: 1px solid rgba(96, 165, 250, 0.25);
-            border-radius: 10px;
-            padding: 18px 24px;
-            margin-top: 18px;
-            font-size: 1.05em;
-            color: #cbd5e1;
+            padding: 12px 18px 12px 18px;
+            border-radius: var(--r-sm);
+            font-size: 0.87em;
+            color: var(--t2);
+            border-left: 3px solid;
+        }
+        .callout-blue  { background: rgba(99,102,241,0.07);  border: 1px solid rgba(99,102,241,0.14);  border-left: 3px solid var(--blue);  }
+        .callout-red   { background: rgba(239,68,68,0.06);   border: 1px solid rgba(239,68,68,0.14);   border-left: 3px solid var(--red);   }
+        .callout-green { background: rgba(16,185,129,0.06);  border: 1px solid rgba(16,185,129,0.14);  border-left: 3px solid var(--green); }
+        .callout-amber { background: rgba(245,158,11,0.06);  border: 1px solid rgba(245,158,11,0.14);  border-left: 3px solid var(--amber); }
+
+        .source-note {
+            font-size: 0.72em;
+            color: var(--t4);
+            font-style: italic;
+            margin-top: 6px;
+            line-height: 1.4;
         }
 
-        .callout-red {
-            background: rgba(248, 113, 113, 0.08);
-            border-color: rgba(248, 113, 113, 0.25);
-        }
-
-        .callout-green {
-            background: rgba(74, 222, 128, 0.08);
-            border-color: rgba(74, 222, 128, 0.25);
-        }
-
-        /* === TIMELINE / STEPS === */
-        .steps { display: flex; gap: 16px; margin-top: 22px; }
-        .step {
-            flex: 1;
-            text-align: center;
+        /* ═══════════════════════════════════════════════
+           PROCESS STEPS
+        ═══════════════════════════════════════════════ */
+        .steps-row {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
             position: relative;
+            gap: 4px;
+        }
+        .steps-row::before {
+            content: '';
+            position: absolute;
+            top: 22px;
+            left: calc(10% + 10px);
+            right: calc(10% + 10px);
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(99,102,241,0.45), transparent);
+            z-index: 0;
+        }
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 0 8px;
+            position: relative;
+            z-index: 1;
         }
         .step-num {
-            width: 44px; height: 44px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
-            background: rgba(96,165,250,0.2);
-            border: 2px solid #60a5fa;
-            color: #60a5fa;
-            font-weight: 800;
-            font-size: 1.1em;
+            background: linear-gradient(135deg, var(--blue), #4338CA);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 12px;
+            font-size: 0.95em;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 12px;
+            box-shadow: 0 0 22px rgba(99,102,241,0.38);
+            flex-shrink: 0;
         }
-        .step h3 { font-size: 1.1em; margin-bottom: 6px; }
-        .step p { font-size: 0.9em; color: #94a3b8; max-width: 100%; }
+        .step h3 { font-size: 0.9em; text-align: center; }
+        .step p  { font-size: 0.78em; max-width: 100%; text-align: center; color: var(--t3); margin-top: 4px; }
 
-        /* === PRICING TABLE === */
+        /* ═══════════════════════════════════════════════
+           BAR CHARTS
+        ═══════════════════════════════════════════════ */
+        .bar-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 9px;
+        }
+        .bar-row-label {
+            width: 148px;
+            text-align: right;
+            font-size: 0.78em;
+            font-weight: 500;
+            color: var(--t3);
+            flex-shrink: 0;
+        }
+        .bar-track {
+            flex: 1;
+            height: 7px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .bar-fill { height: 100%; border-radius: 8px; }
+        .bar-val  { width: 68px; font-size: 0.8em; font-weight: 700; color: var(--t1); }
+
+        /* ═══════════════════════════════════════════════
+           PRICING CARDS
+        ═══════════════════════════════════════════════ */
         .pricing-card {
-            background: rgba(30, 41, 59, 0.8);
-            border: 1px solid rgba(71, 85, 105, 0.5);
-            border-radius: 16px;
-            padding: 28px 24px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            padding: 24px 20px;
             display: flex;
             flex-direction: column;
+            gap: 8px;
         }
         .pricing-card.featured {
-            border-color: #60a5fa;
-            box-shadow: 0 0 30px rgba(96, 165, 250, 0.15);
+            background: linear-gradient(160deg, rgba(99,102,241,0.1) 0%, rgba(99,102,241,0.03) 100%);
+            border-color: rgba(99,102,241,0.38);
+            position: relative;
         }
-        .pricing-card h3 { font-size: 1.4em; margin-bottom: 4px; }
-        .pricing-card .price { font-size: 0.95em; color: #60a5fa; margin-bottom: 14px; }
-        .pricing-card ul { font-size: 0.88em; list-style: none; padding: 0; }
-        .pricing-card ul li { padding: 5px 0; border-bottom: 1px solid rgba(71,85,105,0.3); }
-        .pricing-card ul li:last-child { border: none; }
-
-        /* === SOURCE / REFERENCE === */
-        .source {
-            font-size: 0.7em;
-            color: #475569;
-            margin-top: 6px;
-            font-style: italic;
+        .pricing-card.featured::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 20%;
+            right: 20%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--blue-2), transparent);
         }
-
-        /* === CLOSING SLIDE === */
-        .closing {
-            background: linear-gradient(160deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
-            text-align: center;
-            align-items: center;
+        .pricing-card h3 {
+            font-size: 1.2em;
+            font-weight: 800;
+            letter-spacing: -0.02em;
         }
-
-        /* === BAR CHART CSS === */
-        .bar-h {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-            gap: 12px;
+        .pricing-card .price-desc {
+            font-size: 0.78em;
+            color: var(--t3);
+            line-height: 1.45;
+            margin-bottom: 4px;
         }
-        .bar-h .bar-label { width: 180px; text-align: right; font-size: 0.9em; color: #94a3b8; flex-shrink: 0; }
-        .bar-h .bar-track { flex: 1; height: 22px; background: rgba(30,41,59,0.8); border-radius: 6px; overflow: hidden; }
-        .bar-h .bar-fill { height: 100%; border-radius: 6px; }
-        .bar-h .bar-val { width: 60px; font-size: 0.85em; font-weight: 700; color: #e2e8f0; }
+        .pricing-card ul li::before { content: '✓'; color: var(--green-2); }
+        .pricing-card ul li { font-size: 0.81em; }
 
-        /* === FUNNEL === */
-        .funnel { display: flex; flex-direction: column; align-items: center; gap: 4px; margin-top: 16px; }
+        /* ═══════════════════════════════════════════════
+           FUNNEL
+        ═══════════════════════════════════════════════ */
+        .funnel { display: flex; flex-direction: column; align-items: center; gap: 3px; margin-top: 14px; }
         .funnel-level {
             text-align: center;
-            padding: 14px;
+            padding: 11px;
             color: white;
             font-weight: 600;
-            font-size: 0.95em;
+            font-size: 0.87em;
             border-radius: 8px;
         }
 
+        /* ═══════════════════════════════════════════════
+           COVER SLIDE
+        ═══════════════════════════════════════════════ */
+        section.cover {
+            justify-content: flex-end;
+            padding-bottom: 82px;
+            background:
+                radial-gradient(ellipse 75% 55% at 85% 20%, rgba(99,102,241,0.12) 0%, transparent 60%),
+                radial-gradient(ellipse 45% 35% at 15% 85%, rgba(16,185,129,0.05) 0%, transparent 60%),
+                var(--bg);
+        }
+        section.cover::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(rgba(255,255,255,0.028) 1px, transparent 1px);
+            background-size: 36px 36px;
+            pointer-events: none;
+        }
+        .cover-eyebrow {
+            font-size: 0.73em;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--blue-2);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .cover-eyebrow::before {
+            content: '';
+            display: block;
+            width: 26px;
+            height: 1px;
+            background: var(--blue-2);
+        }
+        .cover-title {
+            font-size: 6.2em;
+            font-weight: 900;
+            letter-spacing: -0.045em;
+            line-height: 0.88;
+            color: var(--t1);
+            margin-bottom: 22px;
+        }
+        .cover-title .grad {
+            background: linear-gradient(135deg, var(--blue-2) 0%, var(--blue-3) 50%, #C7D2FE 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .cover-sub {
+            font-size: 1.08em;
+            color: var(--t3);
+            font-weight: 400;
+            max-width: 480px;
+            line-height: 1.55;
+            margin-bottom: 34px;
+        }
+        .cover-metrics {
+            display: flex;
+            align-items: stretch;
+            border: 1px solid var(--border);
+            border-radius: var(--r);
+            background: var(--surface);
+            width: fit-content;
+            overflow: hidden;
+        }
+        .cover-metric {
+            padding: 13px 26px;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+        .cover-metric:not(:last-child) { border-right: 1px solid var(--border); }
+        .cover-metric-label {
+            font-size: 0.62em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--t4);
+        }
+        .cover-metric-value {
+            font-size: 0.97em;
+            font-weight: 700;
+            color: var(--t1);
+        }
+
+        /* ═══════════════════════════════════════════════
+           CLOSING SLIDE
+        ═══════════════════════════════════════════════ */
+        section.closing {
+            text-align: center;
+            align-items: center;
+            background:
+                radial-gradient(ellipse 65% 65% at 50% 50%, rgba(99,102,241,0.09) 0%, transparent 65%),
+                var(--bg);
+        }
+        section.closing::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(rgba(255,255,255,0.025) 1px, transparent 1px);
+            background-size: 36px 36px;
+            pointer-events: none;
+        }
+
+        /* ═══════════════════════════════════════════════
+           PRINT
+        ═══════════════════════════════════════════════ */
         @media print {
-            section { width: 100%; height: 100vh; }
+            html { overflow: initial; scroll-snap-type: none; }
+            section { scroll-snap-align: none; width: 100%; height: 100vh; page-break-after: always; break-after: page; }
             body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ==================== SLIDE 1: COVER ==================== -->
-    <section class="cover">
-        <span class="tag tag-blue">PITCH DECK 2026</span>
-        <h1>Salute di Ferro</h1>
-        <div class="subtitle">Piattaforma di coordinamento per performance, salute e longevit&agrave;</div>
-        <p style="color: #64748b; font-size: 0.95em;">Performance. Salute. Longevit&agrave;. &mdash; Un percorso strutturato, finalmente.</p>
-        <div class="slide-footer">
-            <span>Salute di Ferro &mdash; Confidenziale</span>
-            <span>1</span>
+<!-- ══════════════════════════════════════════════════
+     SLIDE 1 — COVER
+══════════════════════════════════════════════════ -->
+<section class="cover">
+    <div class="cover-eyebrow">Pitch Deck &mdash; 2026</div>
+    <div class="cover-title">Salute<br><span class="grad">di Ferro</span></div>
+    <p class="cover-sub">Piattaforma di coordinamento per performance, salute e longevit&agrave;</p>
+    <div class="cover-metrics">
+        <div class="cover-metric">
+            <span class="cover-metric-label">Mercato SAM</span>
+            <span class="cover-metric-value">&euro;180M</span>
         </div>
-    </section>
+        <div class="cover-metric">
+            <span class="cover-metric-label">Target Italia</span>
+            <span class="cover-metric-value">5.3M atleti</span>
+        </div>
+        <div class="cover-metric">
+            <span class="cover-metric-label">Lancio</span>
+            <span class="cover-metric-value">Q2 2026</span>
+        </div>
+        <div class="cover-metric">
+            <span class="cover-metric-label">Stage</span>
+            <span class="cover-metric-value">Pre-Seed</span>
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span>Salute di Ferro &mdash; Confidenziale</span>
+        <span>1 / 21</span>
+    </div>
+</section>
 
-    <!-- ==================== SLIDE 2: IL PROBLEMA ==================== -->
-    <section>
-        <span class="tag tag-red">IL PROBLEMA</span>
-        <h2>La Confusione Diagnostica nel Mondo Fitness</h2>
-        <p>Chi si allena seriamente non ha un punto di riferimento strutturato per monitorare la propria salute. Il risultato: rischi invisibili, decisioni alla cieca, e professionisti senza dati.</p>
-        <div class="grid-4" style="margin-top: 24px;">
-            <div class="card">
-                <h3 class="accent-red">Disorientamento</h3>
-                <p>Nessuno sa quali esami fare per ottimizzare performance e salute</p>
-            </div>
-            <div class="card">
-                <h3 class="accent-red">Analisi Generiche</h3>
-                <p>Esami di routine che non intercettano i veri marcatori di performance</p>
-            </div>
-            <div class="card">
-                <h3 class="accent-red">Rischi Invisibili</h3>
-                <p>Parametri critici non monitorati compromettono risultati e longevit&agrave;</p>
-            </div>
-            <div class="card">
-                <h3 class="accent-red">Professionisti Senza Dati</h3>
-                <p>Coach e trainer operano senza una base diagnostica solida</p>
-            </div>
+<!-- ══════════════════════════════════════════════════
+     SLIDE 2 — IL PROBLEMA
+══════════════════════════════════════════════════ -->
+<section>
+    <span class="tag tag-red">Il Problema</span>
+    <h2>La Confusione Diagnostica nel Mondo Fitness</h2>
+    <div class="rule"></div>
+    <p class="lead">Chi si allena seriamente non ha un punto di riferimento strutturato per monitorare la propria salute. Il risultato: rischi invisibili, decisioni alla cieca, professionisti senza dati.</p>
+    <div class="g4" style="margin-top: 18px;">
+        <div class="card ct-red">
+            <h3 class="ac-red" style="margin-bottom:7px;">Disorientamento</h3>
+            <p>Nessuno sa quali esami fare per ottimizzare performance e salute</p>
         </div>
-        <div class="callout callout-red" style="margin-top: 20px;">
-            <strong>Il 30-50% dei frequentatori di palestre</strong> orientati al bodybuilding utilizza o ha utilizzato sostanze ergogeniche, spesso senza alcun monitoraggio clinico.
-            <div class="source">Fonte: Sagoe et al. (2014), &ldquo;The global epidemiology of AAS use: a meta-analysis&rdquo;, Annals of Epidemiology; Abrahin et al. (2024), BMC Public Health</div>
+        <div class="card ct-red">
+            <h3 class="ac-red" style="margin-bottom:7px;">Analisi Generiche</h3>
+            <p>Esami di routine che non intercettano i veri marcatori di performance</p>
         </div>
-        <div class="slide-footer">
-            <span>Salute di Ferro &mdash; Confidenziale</span>
-            <span>2</span>
+        <div class="card ct-red">
+            <h3 class="ac-red" style="margin-bottom:7px;">Rischi Invisibili</h3>
+            <p>Parametri critici non monitorati compromettono risultati e longevit&agrave;</p>
         </div>
-    </section>
+        <div class="card ct-red">
+            <h3 class="ac-red" style="margin-bottom:7px;">Professionisti Senza Dati</h3>
+            <p>Coach e trainer operano senza una base diagnostica solida</p>
+        </div>
+    </div>
+    <div class="callout callout-red" style="margin-top: 16px;">
+        <strong>Il 30&ndash;50% dei frequentatori di palestre</strong> orientati al bodybuilding utilizza o ha utilizzato sostanze ergogeniche, spesso senza alcun monitoraggio clinico.
+        <div class="source-note">Fonte: Sagoe et al. (2014), &ldquo;The global epidemiology of AAS use: a meta-analysis&rdquo;, Annals of Epidemiology; Abrahin et al. (2024), BMC Public Health</div>
+    </div>
+    <div class="slide-footer">
+        <span>Salute di Ferro &mdash; Confidenziale</span>
+        <span>2 / 21</span>
+    </div>
+</section>
 
-    <!-- ==================== SLIDE 3: EVIDENZE SCIENTIFICHE ==================== -->
-    <section>
-        <span class="tag tag-red">DATI SCIENTIFICI</span>
-        <h2>Un Problema Reale, Documentato dalla Scienza</h2>
-        <div class="grid-2">
-            <div>
-                <div class="card" style="margin-bottom: 16px;">
-                    <h3><span class="accent-red">2.81x</span> Rischio di Mortalit&agrave;</h3>
-                    <p>Gli utilizzatori di AAS hanno un hazard ratio di mortalit&agrave; di 2.81 rispetto ai non utilizzatori. Il rischio di morte innaturale sale a 3.64x.</p>
-                    <div class="source">Fonte: Horwitz et al. (2024), &ldquo;Mortality Among Users of Anabolic Steroids&rdquo;, PMC / Journal of Internal Medicine</div>
-                </div>
+<!-- ══════════════════════════════════════════════════
+     SLIDE 3 — EVIDENZE SCIENTIFICHE
+══════════════════════════════════════════════════ -->
+<section>
+    <span class="tag tag-red">Dati Scientifici</span>
+    <h2>Un Problema Reale, Documentato dalla Scienza</h2>
+    <div class="rule"></div>
+    <div class="g2" style="margin-top: 6px;">
+        <div style="display:flex; flex-direction:column; gap:14px;">
+            <div class="card">
+                <h3 style="margin-bottom:6px;"><span class="ac-red" style="font-size:1.3em;">2.81x</span> &mdash; Rischio di Mortalit&agrave;</h3>
+                <p>Gli utilizzatori di AAS hanno un hazard ratio di mortalit&agrave; di 2.81 rispetto ai non utilizzatori. Il rischio di morte innaturale sale a 3.64x.</p>
+                <div class="source-note">Fonte: Horwitz et al. (2024), PMC / Journal of Internal Medicine</div>
+            </div>
+            <div class="card">
+                <h3 style="margin-bottom:6px;"><span class="ac-red" style="font-size:1.3em;">137</span> &mdash; Casi Fatali Analizzati</h3>
+                <p>Uno studio forense 2025 ha esaminato 137 casi di morte cardiaca improvvisa in giovani maschi, principalmente bodybuilder. Autopsia: ipertrofia ventricolare, trombosi coronarica, cardiomiopatia dilatativa.</p>
+                <div class="source-note">Fonte: Frontiers in Cardiovascular Medicine (2025)</div>
+            </div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:14px;">
+            <div class="card">
+                <h3 style="margin-bottom:6px;"><span class="ac-amber" style="font-size:1.3em;">3.8%</span> &mdash; Prevalenza in Europa</h3>
+                <p>La prevalenza d&rsquo;uso di AAS in Europa &egrave; del 3.8% nella popolazione generale sportiva. Nelle palestre orientate al bodybuilding, sale al 30&ndash;50%.</p>
+                <div class="source-note">Fonte: Sagoe et al., Annals of Epidemiology (2014); Karger (2023)</div>
+            </div>
+            <div class="card">
+                <h3 style="margin-bottom:6px;"><span class="ac-amber" style="font-size:1.3em;">Solo 40%</span> &mdash; Cerca Aiuto</h3>
+                <p>Meno della met&agrave; degli utilizzatori di sostanze ergogeniche si rivolge a un medico per il monitoraggio. La maggior parte si affida a fonti informali.</p>
+                <div class="source-note">Fonte: ScienceDirect (2025), systematic review</div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span>Salute di Ferro &mdash; Confidenziale</span>
+        <span>3 / 21</span>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     SLIDE 4 — GAP DI MERCATO
+══════════════════════════════════════════════════ -->
+<section>
+    <span class="tag tag-amber">Opportunit&agrave;</span>
+    <h2>Il Gap di Mercato da Colmare</h2>
+    <div class="rule"></div>
+    <p class="lead">Un mercato enorme senza un player verticale specializzato in Italia.</p>
+    <div class="g3" style="margin-top: 18px;">
+        <div class="card card-glow">
+            <h3 class="ac-blue" style="margin-bottom:7px;">Trend Longevit&agrave;</h3>
+            <p>L&rsquo;economia globale del wellness ha raggiunto i <strong>$6.8 trilioni</strong> nel 2024 (+7.9% annuo). Il segmento longevity raggiunger&agrave; <strong>$610 miliardi</strong> entro il 2026.</p>
+            <div class="source-note">Fonte: Global Wellness Institute (2025)</div>
+        </div>
+        <div class="card card-glow">
+            <h3 class="ac-blue" style="margin-bottom:7px;">Mercato TRT in Crescita</h3>
+            <p>Il mercato globale TRT vale <strong>$2.07 miliardi</strong> (2024), previsto a $2.97 mld entro il 2032 (CAGR 4.6%). Crescita trainata dalla consapevolezza sull&rsquo;ipogonadismo.</p>
+            <div class="source-note">Fonte: The Business Research Company (2025); Technavio</div>
+        </div>
+        <div class="card card-glow">
+            <h3 class="ac-blue" style="margin-bottom:7px;">5.3M Iscritti in Palestra</h3>
+            <p>L&rsquo;Italia &egrave; tra i top 5 mercati fitness europei con <strong>5.3 milioni di iscritti</strong> e un mercato da $2.8 mld (2024), in crescita al 7.7% annuo.</p>
+            <div class="source-note">Fonte: IMARC Group (2024); EuropeActive</div>
+        </div>
+    </div>
+    <div class="callout callout-amber" style="margin-top: 16px;">
+        <strong>Vuoto di mercato:</strong> Nessuna piattaforma verticale specializzata in Italia che unisca diagnostica mirata, coordinamento medico e follow-up strutturato per atleti e fitness enthusiast.
+    </div>
+    <div class="slide-footer">
+        <span>Salute di Ferro &mdash; Confidenziale</span>
+        <span>4 / 21</span>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     SLIDE 5 — TAM SAM SOM
+══════════════════════════════════════════════════ -->
+<section>
+    <span class="tag tag-amber">Market Size</span>
+    <h2>Dimensione del Mercato</h2>
+    <div class="rule"></div>
+    <div class="g3" style="margin-top: 14px;">
+        <div class="card" style="text-align:center; padding: 26px 18px;">
+            <div class="stat-label">TAM &mdash; Total Addressable Market</div>
+            <div class="stat-num gb" style="margin: 10px 0; font-size:3em;">$3.7B</div>
+            <p style="font-size:0.82em; max-width:100%; color:var(--t3);">Digital health Italia + mercato fitness italiano. Intersezione salute-performance.</p>
+            <div class="source-note">Statista Digital Health Italy (2025); IMARC Group</div>
+        </div>
+        <div class="card card-glow" style="text-align:center; padding: 26px 18px;">
+            <div class="stat-label">SAM &mdash; Serviceable Available Market</div>
+            <div class="stat-num" style="margin: 10px 0; font-size:3em; color: var(--blue-2);">&euro;180M</div>
+            <p style="font-size:0.82em; max-width:100%; color:var(--t3);">Atleti avanzati, BB, PL e fitness &ldquo;spinto&rdquo; in Italia disposti a pagare per diagnostica premium.</p>
+        </div>
+        <div class="card" style="text-align:center; padding: 26px 18px; border-color: rgba(16,185,129,0.2);">
+            <div class="stat-label">SOM &mdash; Serviceable Obtainable Market</div>
+            <div class="stat-num gg" style="margin: 10px 0; font-size:3em;">&euro;5&ndash;10M</div>
+            <p style="font-size:0.82em; max-width:100%; color:var(--t3);">Target realistico anno 3: 2.000&ndash;4.000 clienti attivi con ticket medio &euro;200&ndash;400/mese.</p>
+        </div>
+    </div>
+    <div class="callout callout-green" style="margin-top: 14px;">
+        Il <strong>60% dei consumatori</strong> dichiara che l&rsquo;invecchiamento in salute &egrave; una priorit&agrave; &ldquo;top&rdquo;. Le generazioni pi&ugrave; giovani adottano approcci proattivi: test epigenetici, supplementi cellulari, recovery tools.
+        <div class="source-note">Fonte: McKinsey &mdash; &ldquo;Future of Wellness&rdquo; (2024); Global Wellness Summit (2026)</div>
+    </div>
+    <div class="slide-footer">
+        <span>Salute di Ferro &mdash; Confidenziale</span>
+        <span>5 / 21</span>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     SLIDE 6 — LA SOLUZIONE
+══════════════════════════════════════════════════ -->
+<section>
+    <span class="tag tag-blue">La Nostra Risposta</span>
+    <h2>La Soluzione di Salute di Ferro</h2>
+    <div class="rule"></div>
+    <p class="lead">Non siamo medici. <strong>Coordiniamo il percorso.</strong> Connettiamo atleti con i professionisti giusti, nel modo giusto, al momento giusto.</p>
+    <div class="g4" style="margin-top: 18px;">
+        <div class="card card-glow">
+            <h3 class="ac-blue" style="margin-bottom:7px;">Panel Diagnostici Mirati</h3>
+            <p>Esami specifici per atleti e performance, validati da medici specialisti del settore</p>
+        </div>
+        <div class="card card-glow">
+            <h3 class="ac-blue" style="margin-bottom:7px;">Interpretazione Professionale</h3>
+            <p>Dati trasformati in insight comprensibili, non fogli di carta con graffetta</p>
+        </div>
+        <div class="card card-glow">
+            <h3 class="ac-blue" style="margin-bottom:7px;">Coach di Ferro</h3>
+            <p>Patient Care Coordinator dedicato: guida personalizzata in ogni fase del percorso</p>
+        </div>
+        <div class="card card-glow">
+            <h3 class="ac-blue" style="margin-bottom:7px;">Rete di Specialisti</h3>
+            <p>Endocrinologi, urologi, cardiologi, nefrologi, epatologi, nutrizionisti e altri &mdash; tutti profilati</p>
+        </div>
+    </div>
+    <div class="callout callout-blue" style="margin-top: 16px;">
+        <strong>Il nostro ruolo:</strong> coordiniamo il percorso, non sostituiamo i professionisti sanitari. Le prestazioni sono erogate da medici e laboratori abilitati.
+    </div>
+    <div class="slide-footer">
+        <span>Salute di Ferro &mdash; Confidenziale</span>
+        <span>6 / 21</span>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     SLIDE 7 — COME FUNZIONA
+══════════════════════════════════════════════════ -->
+<section>
+    <span class="tag tag-blue">Il Percorso</span>
+    <h2>Come Funziona</h2>
+    <div class="rule"></div>
+    <p class="lead">Un processo lineare dalla compilazione del form alla revisione medica, fino al follow-up strutturato di 6&ndash;12 mesi.</p>
+    <div class="steps-row" style="margin-top: 28px;">
+        <div class="step">
+            <div class="step-num">1</div>
+            <h3>Questionario SDF</h3>
+            <p>Raccolta dati, anamnesi, obiettivi e pain points del cliente</p>
+        </div>
+        <div class="step">
+            <div class="step-num">2</div>
+            <h3>Orientamento</h3>
+            <p>Call con Coach di Ferro, selezione panel diagnostico personalizzato</p>
+        </div>
+        <div class="step">
+            <div class="step-num">3</div>
+            <h3>Diagnostica</h3>
+            <p>Prenotazione lab, prelievo, istruzioni pre-esame. Zero sbatti.</p>
+        </div>
+        <div class="step">
+            <div class="step-num">4</div>
+            <h3>Match Medico</h3>
+            <p>Collegamento con lo specialista giusto, con tutti i dati gi&agrave; pronti</p>
+        </div>
+        <div class="step">
+            <div class="step-num">5</div>
+            <h3>Follow-up</h3>
+            <p>Monitoraggio continuo 6&ndash;12 mesi, checkpoint strutturati</p>
+        </div>
+    </div>
+    <div class="g2" style="margin-top: 24px;">
+        <div class="callout callout-blue">
+            <strong>Funnel Diagnostico</strong> &mdash; Entry point: panel mirati + consulenza iniziale. Mettiamo in contatto con il medico giusto in base a esami e esigenze.
+        </div>
+        <div class="callout callout-blue">
+            <strong>Funnel Ottimizzazione</strong> &mdash; Percorso 6&ndash;12 mesi: TRT/HRT, monitoraggio, coach dedicato, nutrizionista, sleep coach, mental coach.
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span>Salute di Ferro &mdash; Confidenziale</span>
+        <span>7 / 21</span>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     SLIDE 8 — TARGET
+══════════════════════════════════════════════════ -->
+<section>
+    <span class="tag tag-purple">Target</span>
+    <h2>Chi Serviamo</h2>
+    <div class="rule"></div>
+    <div class="g4" style="margin-top: 16px;">
+        <div class="card ct-purple">
+            <h3 style="margin-bottom:7px;">Bodybuilder Avanzati</h3>
+            <p>Atleti che usano o hanno usato sostanze e necessitano monitoraggio clinico strutturato</p>
+        </div>
+        <div class="card ct-blue-2">
+            <h3 style="margin-bottom:7px;">Powerlifter</h3>
+            <p>Atleti di forza focalizzati su performance, con necessit&agrave; di pannelli specifici</p>
+        </div>
+        <div class="card ct-blue">
+            <h3 style="margin-bottom:7px;">Fitness Spinto Under 40</h3>
+            <p>Appassionati motivati che investono attivamente nella propria salute e performance</p>
+        </div>
+        <div class="card ct-green">
+            <h3 style="margin-bottom:7px;">Over 40 Ottimizzazione</h3>
+            <p>Adulti che cercano longevit&agrave;, ottimizzazione ormonale e anti-aging evidence-based</p>
+        </div>
+    </div>
+    <div class="g2" style="margin-top: 14px;">
+        <div class="card card-dark">
+            <h3 class="ac-red" style="margin-bottom:8px;">I Loro Pain Points</h3>
+            <ul>
+                <li>Non so quali esami fare e ho paura di sbagliare</li>
+                <li>Il medico di base non prescrive quello che mi serve</li>
+                <li>Faccio esami generici: &ldquo;&egrave; tutto ok&rdquo;, ma non mi sento ok</li>
+                <li>Uso sostanze e non so con chi parlarne apertamente</li>
+                <li>Perdo tempo tra prenotazioni, file e burocrazia</li>
+                <li>Mi alleno seriamente ma non monitoro la mia salute</li>
+            </ul>
+        </div>
+        <div class="card card-dark">
+            <h3 class="ac-green" style="margin-bottom:8px;">Cosa Vogliono</h3>
+            <ul>
+                <li>Accesso diretto a specialisti in 3 click</li>
+                <li>Panel specifici BB/fitness validati da professionisti</li>
+                <li>Zero sbatti: prenotazione, lab, referti gestiti</li>
+                <li>Tempi brevi: max 72h per analisi e visite</li>
+                <li>Cartella sanitaria digitale, non foglio e graffetta</li>
+                <li>Dati chiari, non rassicurazioni superficiali</li>
+            </ul>
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span>Salute di Ferro &mdash; Confidenziale</span>
+        <span>8 / 21</span>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     SLIDE 9 — LE OFFERTE
+══════════════════════════════════════════════════ -->
+<section>
+    <span class="tag tag-green">Offerte</span>
+    <h2>Tre Livelli di Servizio</h2>
+    <div class="rule"></div>
+    <div class="g3" style="margin-top: 14px;">
+        <div class="pricing-card">
+            <span class="tag tag-green" style="margin-bottom:4px;">Entry</span>
+            <h3>NATURAL</h3>
+            <p class="price-desc">Fai gli esami giusti, zero sbatti</p>
+            <ul>
+                <li>Accesso ai pannelli SDF validati</li>
+                <li>Prenotazione rapida lab convenzionato</li>
+                <li>Gestione organizzativa completa</li>
+                <li>Istruzioni pre-esame</li>
+                <li>Promemoria automatici</li>
+                <li>Dashboard cliente digitale</li>
+                <li>Supporto via email/ticket</li>
+            </ul>
+        </div>
+        <div class="pricing-card featured">
+            <span class="tag tag-blue" style="margin-bottom:4px;">Consigliato</span>
+            <h3 style="color: var(--blue-2);">YEAH BUDDY</h3>
+            <p class="price-desc">Scegli il panel giusto con una guida</p>
+            <ul>
+                <li>Tutto ci&ograve; che &egrave; in NATURAL +</li>
+                <li>Video call 30 min con Coach di Ferro</li>
+                <li>Form strutturato pre-consulenza</li>
+                <li>Orientamento panel personalizzato</li>
+                <li>Documento &ldquo;Orientamento Diagnostico&rdquo;</li>
+                <li>Indicazione step successivi</li>
+            </ul>
+        </div>
+        <div class="pricing-card">
+            <span class="tag tag-purple" style="margin-bottom:4px;">Premium</span>
+            <h3>OLYMPIA</h3>
+            <p class="price-desc">Percorso assistito fino allo specialista</p>
+            <ul>
+                <li>Tutto ci&ograve; che &egrave; in YEAH BUDDY +</li>
+                <li>Coach di Ferro dedicato</li>
+                <li>3 checkpoint strutturati</li>
+                <li>Coordinamento fino a visita specialistica</li>
+                <li>Invio documenti allo specialista</li>
+                <li>Supporto prioritario (SLA 24h)</li>
+                <li>Gestione prioritaria prenotazioni</li>
+            </ul>
+        </div>
+    </div>
+    <div class="callout callout-blue" style="margin-top: 12px; font-size:0.82em;">
+        <strong>Disclaimer:</strong> Salute di Ferro coordina il percorso. Le prestazioni sanitarie sono erogate da professionisti abilitati. Nessuna diagnosi, interpretazione clinica o prescrizione farmacologica.
+    </div>
+    <div class="slide-footer">
+        <span>Salute di Ferro &mdash; Confidenziale</span>
+        <span>9 / 21</span>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     SLIDE 10 — PERCORSI PREMIUM
+══════════════════════════════════════════════════ -->
+<section>
+    <span class="tag tag-purple">Percorsi 6&ndash;12 Mesi</span>
+    <h2>Iron Man &amp; Wonder Woman</h2>
+    <div class="rule"></div>
+    <p class="lead">Percorsi di ottimizzazione a lungo termine con coordinamento completo e team multidisciplinare.</p>
+    <div class="g2" style="margin-top: 18px;">
+        <div class="card ct-blue">
+            <h3 style="font-size:1.3em; margin-bottom:6px;">IRON MAN <span style="font-size:0.65em; color:var(--t3); font-weight:500;">6&ndash;12 mesi</span></h3>
+            <p style="color:var(--blue-2); margin-bottom:12px; font-size:0.85em;">Percorso maschile &mdash; TRT &amp; ottimizzazione</p>
+            <ul>
+                <li>TRT monitorata con endocrinologo</li>
+                <li>Infermiere/centro medico: NAD+, Ozono, IV</li>
+                <li>Health Coach dedicato</li>
+                <li>Nutrizionista</li>
+                <li>Sleep Coach</li>
+                <li>Mental Coach / Psicologo</li>
+            </ul>
+        </div>
+        <div class="card ct-pink">
+            <h3 style="font-size:1.3em; margin-bottom:6px;">WONDER WOMAN <span style="font-size:0.65em; color:var(--t3); font-weight:500;">6&ndash;12 mesi</span></h3>
+            <p style="color:var(--pink); margin-bottom:12px; font-size:0.85em;">Percorso femminile &mdash; HRT &amp; ottimizzazione</p>
+            <ul>
+                <li>HRT monitorata con ginecologa/endocrinologa</li>
+                <li>Infermiere/centro medico: NAD+, Ozono, IV</li>
+                <li>Health Coach dedicato</li>
+                <li>Nutrizionista</li>
+                <li>Sleep Coach</li>
+                <li>Mental Coach / Psicologo</li>
+            </ul>
+        </div>
+    </div>
+    <div class="callout callout-blue" style="margin-top: 14px;">
+        <strong>Rete specialisti SDF:</strong> Endocrinologo, Urologo/Andrologo, Ginecologa, Cardiologo, Nefrologo, Epatologo, Dermatologo, Chirurgo estetico, Neurologo, Ortopedico, Psichiatra, Osteopata del BB, Medico dello Sport
+    </div>
+    <div class="slide-footer">
+        <span>Salute di Ferro &mdash; Confidenziale</span>
+        <span>10 / 21</span>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     SLIDE 11 — REVENUE MODEL
+══════════════════════════════════════════════════ -->
+<section>
+    <span class="tag tag-green">Revenue Model</span>
+    <h2>Modello di Business Sostenibile</h2>
+    <div class="rule"></div>
+    <div class="g2" style="margin-top: 14px;">
+        <div style="display:flex; flex-direction:column; gap:12px;">
+            <div class="card card-glow">
+                <h3 class="ac-blue" style="margin-bottom:6px;">Stream 1 &mdash; Fee su Transazione</h3>
+                <ul>
+                    <li>Fee fissa o % su ogni pannello diagnostico venduto</li>
+                    <li>Fatturazione divisa in 3: laboratorio, medico, SDF</li>
+                    <li>Margine su coordinamento e prenotazione</li>
+                </ul>
+            </div>
+            <div class="card card-glow">
+                <h3 class="ac-blue" style="margin-bottom:6px;">Stream 2 &mdash; Servizi Premium</h3>
+                <ul>
+                    <li>Upsell NATURAL &rarr; YEAH BUDDY &rarr; OLYMPIA</li>
+                    <li>Percorsi Iron Man / Wonder Woman (6&ndash;12 mesi)</li>
+                    <li>Revenue ricorrente su subscription</li>
+                </ul>
+            </div>
+            <div class="card card-glow">
+                <h3 class="ac-blue" style="margin-bottom:6px;">Stream 3 &mdash; Referral Network</h3>
+                <ul>
+                    <li>% referral su fee dai coach / atleti ambassador</li>
+                    <li>Il coach scarica la responsabilit&agrave; diagnostica su SDF</li>
+                    <li>Convenzioni con team coaching</li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <h3 style="margin-bottom:14px; color:var(--t3); font-size:0.82em; text-transform:uppercase; letter-spacing:0.06em;">Unit Economics Target</h3>
+            <div class="bar-row">
+                <div class="bar-row-label">NATURAL</div>
+                <div class="bar-track"><div class="bar-fill" style="width:22%; background:linear-gradient(90deg,var(--green),var(--green-2));"></div></div>
+                <div class="bar-val" style="color:var(--green-2);">&euro;50&ndash;80</div>
+            </div>
+            <div class="bar-row">
+                <div class="bar-row-label">YEAH BUDDY</div>
+                <div class="bar-track"><div class="bar-fill" style="width:42%; background:linear-gradient(90deg,var(--blue),var(--blue-2));"></div></div>
+                <div class="bar-val" style="color:var(--blue-2);">&euro;150&ndash;200</div>
+            </div>
+            <div class="bar-row">
+                <div class="bar-row-label">OLYMPIA</div>
+                <div class="bar-track"><div class="bar-fill" style="width:62%; background:linear-gradient(90deg,var(--purple),var(--purple-2));"></div></div>
+                <div class="bar-val" style="color:var(--purple-2);">&euro;300&ndash;500</div>
+            </div>
+            <div class="bar-row">
+                <div class="bar-row-label">IRON MAN / WW</div>
+                <div class="bar-track"><div class="bar-fill" style="width:90%; background:linear-gradient(90deg,var(--amber),var(--amber-2));"></div></div>
+                <div class="bar-val" style="color:var(--amber-2);">&euro;2&ndash;5K</div>
+            </div>
+            <div class="callout callout-green" style="margin-top:20px;">
+                <strong>LTV stimato:</strong> Un cliente che entra con NATURAL e converte a IRON MAN genera <strong>&euro;3.000&ndash;6.000+</strong> in 12 mesi.
+            </div>
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span>Salute di Ferro &mdash; Confidenziale</span>
+        <span>11 / 21</span>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     SLIDE 12 — WIN-WIN-WIN
+══════════════════════════════════════════════════ -->
+<section>
+    <span class="tag tag-blue">Win-Win-Win</span>
+    <h2>Vantaggi per Ogni Stakeholder</h2>
+    <div class="rule"></div>
+    <div class="g3" style="margin-top: 16px;">
+        <div class="card ct-green">
+            <h3 class="ac-green" style="margin-bottom:8px;">Cliente</h3>
+            <ul>
+                <li>Accesso diretto a specialisti in 3 click</li>
+                <li>Panel specifici BB/fitness</li>
+                <li>Zero sbatti: prenotazione gestita</li>
+                <li>Saltafila: max 72h</li>
+                <li>Cartella sanitaria digitale</li>
+                <li>Infermiere a domicilio (opzione)</li>
+            </ul>
+        </div>
+        <div class="card ct-blue">
+            <h3 class="ac-blue" style="margin-bottom:8px;">Medico / Specialista</h3>
+            <ul>
+                <li>Pubblicit&agrave; e posizionamento</li>
+                <li>Solo clienti pre-profilati e in target</li>
+                <li>Zero back-office: dati gi&agrave; raccolti</li>
+                <li>Questionario pre-compilato</li>
+                <li>Focus su visita, non burocrazia</li>
+            </ul>
+        </div>
+        <div class="card ct-purple">
+            <h3 class="ac-purple" style="margin-bottom:8px;">Laboratorio / Infermiere</h3>
+            <ul>
+                <li>Zero sbatti pagamenti/prenotazioni</li>
+                <li>Presenza nella piattaforma SDF</li>
+                <li>Pi&ugrave; clienti di nicchia selezionata</li>
+                <li>Compenso extra se specialista opera in sede</li>
+            </ul>
+        </div>
+    </div>
+    <div class="g2" style="margin-top: 14px;">
+        <div class="callout callout-green">
+            <strong>Per i Coach / Preparatori:</strong> Si tolgono il problema della responsabilit&agrave; diagnostica. I loro atleti fanno esami, sono coperti legalmente. % referral sulla fee SDF.
+        </div>
+        <div class="callout callout-blue">
+            <strong>Evidenza scientifica:</strong> L&rsquo;86% degli atleti sottoposti a screening cardiovascolare mostra almeno un fattore di rischio non identificato dagli esami standard di routine.
+            <div class="source-note">Fonte: PMC (2024), &ldquo;Assessing athletes beyond routine screening&rdquo;</div>
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span>Salute di Ferro &mdash; Confidenziale</span>
+        <span>12 / 21</span>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     SLIDE 13 — VANTAGGIO COMPETITIVO
+══════════════════════════════════════════════════ -->
+<section>
+    <span class="tag tag-blue">Moat</span>
+    <h2>Vantaggio Competitivo Distintivo</h2>
+    <div class="rule"></div>
+    <div class="g2" style="margin-top: 18px;">
+        <div class="card card-glow">
+            <h3 class="ac-blue" style="margin-bottom:8px;">Vertical Performance</h3>
+            <p>Focus esclusivo su fitness e ottimizzazione atletica. Non siamo un marketplace generico: parliamo la lingua del nostro target.</p>
+        </div>
+        <div class="card card-glow">
+            <h3 class="ac-blue" style="margin-bottom:8px;">Clienti Pre-qualificati</h3>
+            <p>Pubblico motivato, disposto a investire nella propria salute. Ticket medio alto, bassa resistenza al prezzo.</p>
+        </div>
+        <div class="card card-glow">
+            <h3 class="ac-blue" style="margin-bottom:8px;">Effetto Rete</h3>
+            <p>Pi&ugrave; atleti = pi&ugrave; dati = protocolli migliori = pi&ugrave; medici = pi&ugrave; valore. La crescita della community amplifica il moat.</p>
+        </div>
+        <div class="card card-glow">
+            <h3 class="ac-blue" style="margin-bottom:8px;">Vantaggio Dati</h3>
+            <p>Un database crescente di risultati diagnostici per profilo atletico diventa un asset competitivo sempre pi&ugrave; forte.</p>
+        </div>
+    </div>
+    <div class="callout callout-amber" style="margin-top: 16px;">
+        <strong>Mercato vergine:</strong> Nessun competitor specializzato in Italia nel segmento performance-diagnostica. Protocolli standardizzati che scalano senza perdere qualit&agrave;.
+    </div>
+    <div class="slide-footer">
+        <span>Salute di Ferro &mdash; Confidenziale</span>
+        <span>13 / 21</span>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     SLIDE 14 — SCALABILITÀ
+══════════════════════════════════════════════════ -->
+<section>
+    <span class="tag tag-green">Scalabilit&agrave;</span>
+    <h2>Scalabilit&agrave; del Modello</h2>
+    <div class="rule"></div>
+    <p class="lead">Un sistema asset-light con margini crescenti nel tempo.</p>
+    <div class="g2" style="margin-top: 18px;">
+        <div>
+            <h3 style="margin-bottom:12px; color:var(--t3); font-size:0.78em; text-transform:uppercase; letter-spacing:0.07em;">Leve di Crescita</h3>
+            <div style="display:flex; flex-direction:column; gap:10px;">
                 <div class="card">
-                    <h3><span class="accent-red">137</span> Casi Fatali Analizzati</h3>
-                    <p>Uno studio forense 2025 ha esaminato 137 casi di morte cardiaca improvvisa in giovani maschi, principalmente bodybuilder. Autopsia: ipertrofia ventricolare, trombosi coronarica, cardiomiopatia dilatativa.</p>
-                    <div class="source">Fonte: Frontiers in Cardiovascular Medicine (2025), &ldquo;Forensic approach in cases of AAS abuse and cardiovascular mortality&rdquo;</div>
-                </div>
-            </div>
-            <div>
-                <div class="card" style="margin-bottom: 16px;">
-                    <h3><span class="accent-amber">3.8%</span> Prevalenza in Europa</h3>
-                    <p>La prevalenza d&rsquo;uso di AAS in Europa &egrave; del 3.8% nella popolazione generale sportiva. Nelle palestre orientate al bodybuilding, sale al 30-50%.</p>
-                    <div class="source">Fonte: Sagoe et al., Annals of Epidemiology (2014); Karger &ndash; European Addiction Research (2023)</div>
-                </div>
-                <div class="card">
-                    <h3><span class="accent-amber">Solo 40%</span> Cerca Aiuto</h3>
-                    <p>Meno della met&agrave; degli utilizzatori di sostanze ergogeniche si rivolge a un medico per il monitoraggio. La maggior parte si affida a fonti informali.</p>
-                    <div class="source">Fonte: ScienceDirect (2025), &ldquo;Steroid and illicit drug abuse in the health and fitness community: A systematic review&rdquo;</div>
-                </div>
-            </div>
-        </div>
-        <div class="slide-footer">
-            <span>Salute di Ferro &mdash; Confidenziale</span>
-            <span>3</span>
-        </div>
-    </section>
-
-    <!-- ==================== SLIDE 4: GAP DI MERCATO ==================== -->
-    <section>
-        <span class="tag tag-amber">OPPORTUNIT&Agrave;</span>
-        <h2>Il Gap di Mercato da Colmare</h2>
-        <p>Un mercato enorme senza un player verticale specializzato in Italia.</p>
-        <div class="grid-3" style="margin-top: 22px;">
-            <div class="card card-highlight">
-                <h3 class="accent">Trend Longevit&agrave;</h3>
-                <p>L&rsquo;economia globale del wellness ha raggiunto i <strong>$6.8 trilioni</strong> nel 2024 (+7.9% annuo). Il segmento longevity raggiunger&agrave; <strong>$610 miliardi</strong> entro il 2026.</p>
-                <div class="source">Fonte: Global Wellness Institute (2025)</div>
-            </div>
-            <div class="card card-highlight">
-                <h3 class="accent">Mercato TRT in Crescita</h3>
-                <p>Il mercato globale TRT vale <strong>$2.07 miliardi</strong> (2024), previsto a $2.97 mld entro il 2032 (CAGR 4.6%). Crescita trainata dalla consapevolezza sull&rsquo;ipogonadismo.</p>
-                <div class="source">Fonte: The Business Research Company (2025); Technavio</div>
-            </div>
-            <div class="card card-highlight">
-                <h3 class="accent">5.3M Iscritti in Palestra</h3>
-                <p>L&rsquo;Italia &egrave; tra i top 5 mercati fitness europei con <strong>5.3 milioni di iscritti</strong> e un mercato da $2.8 mld (2024), in crescita al 7.7% annuo.</p>
-                <div class="source">Fonte: IMARC Group (2024); EuropeActive</div>
-            </div>
-        </div>
-        <div class="callout" style="margin-top: 18px;">
-            <strong>Vuoto di mercato:</strong> Nessuna piattaforma verticale specializzata in Italia che unisca diagnostica mirata, coordinamento medico e follow-up strutturato per atleti e fitness enthusiast.
-        </div>
-        <div class="slide-footer">
-            <span>Salute di Ferro &mdash; Confidenziale</span>
-            <span>4</span>
-        </div>
-    </section>
-
-    <!-- ==================== SLIDE 5: TAM SAM SOM ==================== -->
-    <section>
-        <span class="tag tag-amber">MARKET SIZE</span>
-        <h2>Dimensione del Mercato</h2>
-        <div class="grid-3" style="margin-top: 10px;">
-            <div class="card" style="text-align: center; border-color: rgba(96,165,250,0.15);">
-                <div class="stat">
-                    <div class="num">$3.7B</div>
-                    <div class="label" style="margin-bottom: 10px;">TAM &mdash; Total Addressable Market</div>
-                </div>
-                <p style="font-size: 0.85em; max-width: 100%;">Digital health Italia ($3.73 mld, 2025) + mercato fitness italiano ($2.8 mld). Intersezione salute-performance.</p>
-                <div class="source">Fonte: Statista Digital Health Italy (2025); IMARC Group</div>
-            </div>
-            <div class="card" style="text-align: center; border-color: rgba(96,165,250,0.3);">
-                <div class="stat">
-                    <div class="num" style="color: #818cf8;">&euro;180M</div>
-                    <div class="label" style="margin-bottom: 10px;">SAM &mdash; Serviceable Available Market</div>
-                </div>
-                <p style="font-size: 0.85em; max-width: 100%;">Atleti avanzati, BB, PL e fitness &ldquo;spinto&rdquo; in Italia disposti a pagare per diagnostica e coordinamento premium.</p>
-            </div>
-            <div class="card" style="text-align: center; border-color: rgba(96,165,250,0.5);">
-                <div class="stat">
-                    <div class="num" style="color: #4ade80;">&euro;5-10M</div>
-                    <div class="label" style="margin-bottom: 10px;">SOM &mdash; Serviceable Obtainable Market</div>
-                </div>
-                <p style="font-size: 0.85em; max-width: 100%;">Target realistico anno 3: 2.000-4.000 clienti attivi con ticket medio &euro;200-400/mese tra diagnostica e percorsi.</p>
-            </div>
-        </div>
-        <div class="callout-green callout" style="margin-top: 15px;">
-            Il <strong>60% dei consumatori</strong> dichiara che l&rsquo;invecchiamento in salute &egrave; una priorit&agrave; &ldquo;top&rdquo;. Le generazioni pi&ugrave; giovani adottano approcci proattivi: test epigenetici, supplementi cellulari, recovery tools.
-            <div class="source">Fonte: McKinsey &mdash; &ldquo;Future of Wellness&rdquo; (2024); Global Wellness Summit (2026)</div>
-        </div>
-        <div class="slide-footer">
-            <span>Salute di Ferro &mdash; Confidenziale</span>
-            <span>5</span>
-        </div>
-    </section>
-
-    <!-- ==================== SLIDE 6: LA SOLUZIONE ==================== -->
-    <section>
-        <span class="tag tag-blue">LA NOSTRA RISPOSTA</span>
-        <h2>La Soluzione di Salute di Ferro</h2>
-        <p>Non siamo medici. <strong>Coordiniamo il percorso.</strong> Connettiamo atleti con i professionisti giusti, nel modo giusto, al momento giusto.</p>
-        <div class="grid-4" style="margin-top: 24px;">
-            <div class="card card-highlight">
-                <h3 class="accent">Panel Diagnostici Mirati</h3>
-                <p>Esami specifici per atleti e performance, validati da medici specialisti del settore</p>
-            </div>
-            <div class="card card-highlight">
-                <h3 class="accent">Interpretazione Professionale</h3>
-                <p>Dati trasformati in insight comprensibili, non fogli di carta con graffetta</p>
-            </div>
-            <div class="card card-highlight">
-                <h3 class="accent">Coach di Ferro</h3>
-                <p>Patient Care Coordinator dedicato: guida personalizzata in ogni fase del percorso</p>
-            </div>
-            <div class="card card-highlight">
-                <h3 class="accent">Rete di Specialisti</h3>
-                <p>Endocrinologi, urologi, cardiologi, nefrologi, epatologi, nutrizionisti e altri &mdash; tutti profilati</p>
-            </div>
-        </div>
-        <div class="callout" style="margin-top: 18px;">
-            <strong>Il nostro ruolo:</strong> coordiniamo il percorso, non sostituiamo i professionisti sanitari. Le prestazioni sono erogate da medici e laboratori abilitati.
-        </div>
-        <div class="slide-footer">
-            <span>Salute di Ferro &mdash; Confidenziale</span>
-            <span>6</span>
-        </div>
-    </section>
-
-    <!-- ==================== SLIDE 7: COME FUNZIONA ==================== -->
-    <section>
-        <span class="tag tag-blue">IL PERCORSO</span>
-        <h2>Come Funziona</h2>
-        <p>Un processo lineare dalla compilazione del form alla revisione medica, fino al follow-up strutturato di 6-12 mesi.</p>
-        <div class="steps" style="margin-top: 30px;">
-            <div class="step">
-                <div class="step-num">1</div>
-                <h3>Questionario SDF</h3>
-                <p>Raccolta dati, anamnesi, obiettivi e pain points del cliente</p>
-            </div>
-            <div class="step">
-                <div class="step-num">2</div>
-                <h3>Orientamento</h3>
-                <p>Call con Coach di Ferro, selezione panel diagnostico personalizzato</p>
-            </div>
-            <div class="step">
-                <div class="step-num">3</div>
-                <h3>Diagnostica</h3>
-                <p>Prenotazione lab, prelievo, istruzioni pre-esame. Zero sbatti.</p>
-            </div>
-            <div class="step">
-                <div class="step-num">4</div>
-                <h3>Match Medico</h3>
-                <p>Collegamento con lo specialista giusto, con tutti i dati gi&agrave; pronti</p>
-            </div>
-            <div class="step">
-                <div class="step-num">5</div>
-                <h3>Follow-up</h3>
-                <p>Monitoraggio continuo 6-12 mesi, checkpoint strutturati</p>
-            </div>
-        </div>
-        <div class="grid-2" style="margin-top: 28px;">
-            <div class="callout">
-                <strong>Funnel Diagnostico</strong> &mdash; Entry point: panel mirati + consulenza iniziale. Mettiamo in contatto con il medico giusto in base a esami e esigenze.
-            </div>
-            <div class="callout">
-                <strong>Funnel Ottimizzazione</strong> &mdash; Percorso 6-12 mesi: TRT/HRT, monitoraggio, coach dedicato, nutrizionista, sleep coach, mental coach.
-            </div>
-        </div>
-        <div class="slide-footer">
-            <span>Salute di Ferro &mdash; Confidenziale</span>
-            <span>7</span>
-        </div>
-    </section>
-
-    <!-- ==================== SLIDE 8: TARGET ==================== -->
-    <section>
-        <span class="tag tag-purple">TARGET</span>
-        <h2>Chi Serviamo</h2>
-        <div class="grid-4" style="margin-top: 20px;">
-            <div class="card" style="border-top: 3px solid #a78bfa;">
-                <h3>Bodybuilder Avanzati</h3>
-                <p>Atleti che usano o hanno usato sostanze e necessitano monitoraggio clinico strutturato</p>
-            </div>
-            <div class="card" style="border-top: 3px solid #818cf8;">
-                <h3>Powerlifter</h3>
-                <p>Atleti di forza focalizzati su performance, con necessit&agrave; di pannelli specifici</p>
-            </div>
-            <div class="card" style="border-top: 3px solid #60a5fa;">
-                <h3>Fitness Spinto Under 40</h3>
-                <p>Appassionati motivati che investono attivamente nella propria salute e performance</p>
-            </div>
-            <div class="card" style="border-top: 3px solid #38bdf8;">
-                <h3>Over 40 Ottimizzazione</h3>
-                <p>Adulti che cercano longevit&agrave;, ottimizzazione ormonale e anti-aging evidence-based</p>
-            </div>
-        </div>
-        <div class="grid-2" style="margin-top: 22px;">
-            <div class="card card-dark">
-                <h3 class="accent-red">I Loro Pain Points</h3>
-                <ul>
-                    <li>Non so quali esami fare e ho paura di sbagliare</li>
-                    <li>Il medico di base non prescrive quello che mi serve</li>
-                    <li>Faccio esami generici: &ldquo;&egrave; tutto ok&rdquo;, ma non mi sento ok</li>
-                    <li>Uso sostanze e non so con chi parlarne apertamente</li>
-                    <li>Perdo tempo tra prenotazioni, file e burocrazia</li>
-                    <li>Mi alleno seriamente ma non monitoro la mia salute</li>
-                </ul>
-            </div>
-            <div class="card card-dark">
-                <h3 class="accent-green">Cosa Vogliono</h3>
-                <ul>
-                    <li>Accesso diretto a specialisti in 3 click</li>
-                    <li>Panel specifici validati da professionisti del settore</li>
-                    <li>Zero sbatti: prenotazione, lab, referti gestiti</li>
-                    <li>Tempi brevi: max 72h per analisi e visite</li>
-                    <li>Cartella sanitaria digitale, non foglio e graffetta</li>
-                    <li>Dati chiari, non rassicurazioni superficiali</li>
-                </ul>
-            </div>
-        </div>
-        <div class="slide-footer">
-            <span>Salute di Ferro &mdash; Confidenziale</span>
-            <span>8</span>
-        </div>
-    </section>
-
-    <!-- ==================== SLIDE 9: LE OFFERTE ==================== -->
-    <section>
-        <span class="tag tag-green">OFFERTE</span>
-        <h2>Tre Livelli di Servizio</h2>
-        <div class="grid-3" style="margin-top: 16px;">
-            <div class="pricing-card">
-                <span class="tag tag-green" style="align-self: flex-start;">ENTRY</span>
-                <h3>NATURAL</h3>
-                <p class="price">Fai gli esami giusti, zero sbatti</p>
-                <ul>
-                    <li>&#x2714; Accesso ai pannelli SDF validati</li>
-                    <li>&#x2714; Prenotazione rapida lab convenzionato</li>
-                    <li>&#x2714; Gestione organizzativa completa</li>
-                    <li>&#x2714; Istruzioni pre-esame</li>
-                    <li>&#x2714; Promemoria automatici</li>
-                    <li>&#x2714; Dashboard cliente digitale</li>
-                    <li>&#x2714; Supporto via email/ticket</li>
-                </ul>
-            </div>
-            <div class="pricing-card featured">
-                <span class="tag tag-blue" style="align-self: flex-start;">CONSIGLIATO</span>
-                <h3>YEAH BUDDY</h3>
-                <p class="price">Scegli il panel giusto con una guida</p>
-                <ul>
-                    <li>&#x2714; Tutto ci&ograve; che &egrave; in NATURAL +</li>
-                    <li>&#x2714; Video call 30 min con Coach di Ferro</li>
-                    <li>&#x2714; Form strutturato pre-consulenza</li>
-                    <li>&#x2714; Orientamento panel personalizzato</li>
-                    <li>&#x2714; Documento &ldquo;Orientamento Diagnostico&rdquo;</li>
-                    <li>&#x2714; Indicazione step successivi</li>
-                </ul>
-            </div>
-            <div class="pricing-card">
-                <span class="tag tag-purple" style="align-self: flex-start;">PREMIUM</span>
-                <h3>OLYMPIA</h3>
-                <p class="price">Percorso assistito fino allo specialista</p>
-                <ul>
-                    <li>&#x2714; Tutto ci&ograve; che &egrave; in YEAH BUDDY +</li>
-                    <li>&#x2714; Coach di Ferro dedicato</li>
-                    <li>&#x2714; 3 checkpoint strutturati</li>
-                    <li>&#x2714; Coordinamento fino a visita specialistica</li>
-                    <li>&#x2714; Invio documenti allo specialista</li>
-                    <li>&#x2714; Supporto prioritario (SLA 24h)</li>
-                    <li>&#x2714; Gestione prioritaria prenotazioni</li>
-                </ul>
-            </div>
-        </div>
-        <div class="callout" style="margin-top: 14px; font-size: 0.9em;">
-            <strong>Disclaimer:</strong> Salute di Ferro coordina il percorso. Le prestazioni sanitarie sono erogate da professionisti abilitati. Nessuna diagnosi, interpretazione clinica o prescrizione farmacologica.
-        </div>
-        <div class="slide-footer">
-            <span>Salute di Ferro &mdash; Confidenziale</span>
-            <span>9</span>
-        </div>
-    </section>
-
-    <!-- ==================== SLIDE 10: PERCORSI PREMIUM ==================== -->
-    <section>
-        <span class="tag tag-purple">PERCORSI 6-12 MESI</span>
-        <h2>Iron Man &amp; Wonder Woman</h2>
-        <p>Percorsi di ottimizzazione a lungo termine con coordinamento completo e team multidisciplinare.</p>
-        <div class="grid-2" style="margin-top: 22px;">
-            <div class="card" style="border-top: 3px solid #60a5fa;">
-                <h3 style="font-size: 1.4em;">IRON MAN <span style="font-size: 0.7em; color: #64748b;">6-12 mesi</span></h3>
-                <p style="color: #60a5fa; margin-bottom: 12px;">Percorso maschile &mdash; TRT &amp; ottimizzazione</p>
-                <ul>
-                    <li>TRT monitorata con endocrinologo</li>
-                    <li>Infermiere/centro medico: NAD+, Ozono, IV</li>
-                    <li>Health Coach dedicato</li>
-                    <li>Nutrizionista</li>
-                    <li>Sleep Coach</li>
-                    <li>Mental Coach / Psicologo</li>
-                </ul>
-            </div>
-            <div class="card" style="border-top: 3px solid #f472b6;">
-                <h3 style="font-size: 1.4em;">WONDER WOMAN <span style="font-size: 0.7em; color: #64748b;">6-12 mesi</span></h3>
-                <p style="color: #f472b6; margin-bottom: 12px;">Percorso femminile &mdash; HRT &amp; ottimizzazione</p>
-                <ul>
-                    <li>HRT monitorata con ginecologa/endocrinologa</li>
-                    <li>Infermiere/centro medico: NAD+, Ozono, IV</li>
-                    <li>Health Coach dedicato</li>
-                    <li>Nutrizionista</li>
-                    <li>Sleep Coach</li>
-                    <li>Mental Coach / Psicologo</li>
-                </ul>
-            </div>
-        </div>
-        <div class="callout" style="margin-top: 16px;">
-            <strong>Rete specialisti SDF:</strong> Endocrinologo, Urologo/Andrologo, Ginecologa, Cardiologo, Nefrologo, Epatologo, Dermatologo, Chirurgo estetico, Neurologo, Ortopedico, Psichiatra, Osteopata del BB, Medico dello Sport
-        </div>
-        <div class="slide-footer">
-            <span>Salute di Ferro &mdash; Confidenziale</span>
-            <span>10</span>
-        </div>
-    </section>
-
-    <!-- ==================== SLIDE 11: REVENUE MODEL ==================== -->
-    <section>
-        <span class="tag tag-green">REVENUE MODEL</span>
-        <h2>Modello di Business Sostenibile</h2>
-        <div class="grid-2" style="margin-top: 16px;">
-            <div>
-                <div class="card card-highlight" style="margin-bottom: 16px;">
-                    <h3 class="accent">Revenue Stream 1: Fee su Transazione</h3>
-                    <ul>
-                        <li>Fee fissa o % su ogni pannello diagnostico venduto</li>
-                        <li>Fatturazione divisa in 3: laboratorio, medico, SDF</li>
-                        <li>Margine su coordinamento e prenotazione</li>
-                    </ul>
-                </div>
-                <div class="card card-highlight" style="margin-bottom: 16px;">
-                    <h3 class="accent">Revenue Stream 2: Servizi Premium</h3>
-                    <ul>
-                        <li>Upsell NATURAL &rarr; YEAH BUDDY &rarr; OLYMPIA</li>
-                        <li>Percorsi Iron Man / Wonder Woman (6-12 mesi)</li>
-                        <li>Revenue ricorrente su subscription</li>
-                    </ul>
-                </div>
-                <div class="card card-highlight">
-                    <h3 class="accent">Revenue Stream 3: Referral Network</h3>
-                    <ul>
-                        <li>% referral su fee dai coach / atleti ambassador</li>
-                        <li>Il coach scarica la responsabilit&agrave; diagnostica su SDF</li>
-                        <li>Convenzioni con team coaching</li>
-                    </ul>
-                </div>
-            </div>
-            <div>
-                <h3 style="margin-bottom: 12px;">Unit Economics Target</h3>
-                <div class="bar-h">
-                    <div class="bar-label">NATURAL</div>
-                    <div class="bar-track"><div class="bar-fill" style="width: 25%; background: linear-gradient(90deg, #4ade80, #22c55e);"></div></div>
-                    <div class="bar-val" style="color: #4ade80;">&euro;50-80</div>
-                </div>
-                <div class="bar-h">
-                    <div class="bar-label">YEAH BUDDY</div>
-                    <div class="bar-track"><div class="bar-fill" style="width: 45%; background: linear-gradient(90deg, #60a5fa, #3b82f6);"></div></div>
-                    <div class="bar-val" style="color: #60a5fa;">&euro;150-200</div>
-                </div>
-                <div class="bar-h">
-                    <div class="bar-label">OLYMPIA</div>
-                    <div class="bar-track"><div class="bar-fill" style="width: 65%; background: linear-gradient(90deg, #a78bfa, #8b5cf6);"></div></div>
-                    <div class="bar-val" style="color: #a78bfa;">&euro;300-500</div>
-                </div>
-                <div class="bar-h">
-                    <div class="bar-label">IRON MAN / WW</div>
-                    <div class="bar-track"><div class="bar-fill" style="width: 90%; background: linear-gradient(90deg, #fbbf24, #f59e0b);"></div></div>
-                    <div class="bar-val" style="color: #fbbf24;">&euro;2-5K</div>
-                </div>
-                <div class="callout" style="margin-top: 24px;">
-                    <strong>LTV stimato:</strong> Un cliente che entra con NATURAL e converte a IRON MAN genera &euro;3.000-6.000+ in 12 mesi. Il funnel &egrave; progettato per massimizzare la conversione e la retention.
-                </div>
-            </div>
-        </div>
-        <div class="slide-footer">
-            <span>Salute di Ferro &mdash; Confidenziale</span>
-            <span>11</span>
-        </div>
-    </section>
-
-    <!-- ==================== SLIDE 12: VANTAGGI STAKEHOLDER ==================== -->
-    <section>
-        <span class="tag tag-blue">WIN-WIN-WIN</span>
-        <h2>Vantaggi per Ogni Stakeholder</h2>
-        <div class="grid-3" style="margin-top: 18px;">
-            <div class="card" style="border-top: 3px solid #4ade80;">
-                <h3 class="accent-green">Cliente</h3>
-                <ul>
-                    <li>Accesso diretto a specialisti in 3 click</li>
-                    <li>Panel specifici BB/fitness</li>
-                    <li>Zero sbatti: prenotazione gestita</li>
-                    <li>Saltafila: max 72h</li>
-                    <li>Cartella sanitaria digitale</li>
-                    <li>Infermiere a domicilio (opzione)</li>
-                </ul>
-            </div>
-            <div class="card" style="border-top: 3px solid #60a5fa;">
-                <h3 class="accent">Medico / Specialista</h3>
-                <ul>
-                    <li>Pubblicit&agrave; e posizionamento</li>
-                    <li>Solo clienti pre-profilati e in target</li>
-                    <li>Zero back-office: dati gi&agrave; raccolti</li>
-                    <li>Questionario pre-compilato</li>
-                    <li>Focus su visita, non burocrazia</li>
-                </ul>
-            </div>
-            <div class="card" style="border-top: 3px solid #a78bfa;">
-                <h3 class="accent-purple">Laboratorio / Infermiere</h3>
-                <ul>
-                    <li>Zero sbatti pagamenti/prenotazioni</li>
-                    <li>Presenza nella piattaforma SDF</li>
-                    <li>Pi&ugrave; clienti di nicchia selezionata</li>
-                    <li>Compenso extra se specialista opera in sede</li>
-                </ul>
-            </div>
-        </div>
-        <div class="grid-2" style="margin-top: 16px;">
-            <div class="callout callout-green">
-                <strong>Per i Coach / Preparatori:</strong> Si tolgono il problema della responsabilit&agrave; diagnostica. I loro atleti fanno esami, sono coperti legalmente. % referral sulla fee SDF.
-            </div>
-            <div class="callout">
-                <strong>Evidenza scientifica:</strong> L&rsquo;86% degli atleti sottoposti a screening cardiovascolare mostra almeno un fattore di rischio non identificato dagli esami standard di routine.
-                <div class="source">Fonte: PMC (2024), &ldquo;Assessing athletes beyond routine screening&rdquo;</div>
-            </div>
-        </div>
-        <div class="slide-footer">
-            <span>Salute di Ferro &mdash; Confidenziale</span>
-            <span>12</span>
-        </div>
-    </section>
-
-    <!-- ==================== SLIDE 13: VANTAGGIO COMPETITIVO ==================== -->
-    <section>
-        <span class="tag tag-blue">MOAT</span>
-        <h2>Vantaggio Competitivo Distintivo</h2>
-        <div class="grid-2" style="margin-top: 18px;">
-            <div class="card card-highlight">
-                <h3 class="accent">Vertical Performance</h3>
-                <p>Focus esclusivo su fitness e ottimizzazione atletica. Non siamo un marketplace generico: parliamo la lingua del nostro target.</p>
-            </div>
-            <div class="card card-highlight">
-                <h3 class="accent">Clienti Pre-qualificati</h3>
-                <p>Pubblico motivato, disposto a investire nella propria salute. Ticket medio alto, bassa resistenza al prezzo.</p>
-            </div>
-            <div class="card card-highlight">
-                <h3 class="accent">Effetto Rete</h3>
-                <p>Pi&ugrave; atleti = pi&ugrave; dati = protocolli migliori = pi&ugrave; medici = pi&ugrave; valore. La crescita della community amplifica il moat.</p>
-            </div>
-            <div class="card card-highlight">
-                <h3 class="accent">Vantaggio Dati</h3>
-                <p>Un database crescente di risultati diagnostici per profilo atletico diventa un asset competitivo sempre pi&ugrave; forte.</p>
-            </div>
-        </div>
-        <div class="callout" style="margin-top: 18px;">
-            <strong>Mercato vergine:</strong> Nessun competitor specializzato in Italia nel segmento performance-diagnostica. Protocolli standardizzati che scalano senza perdere qualit&agrave;.
-        </div>
-        <div class="slide-footer">
-            <span>Salute di Ferro &mdash; Confidenziale</span>
-            <span>13</span>
-        </div>
-    </section>
-
-    <!-- ==================== SLIDE 14: SCALABILITA' ==================== -->
-    <section>
-        <span class="tag tag-green">SCALABILIT&Agrave;</span>
-        <h2>Scalabilit&agrave; del Modello</h2>
-        <p>Un sistema asset-light con margini crescenti nel tempo.</p>
-        <div class="grid-2" style="margin-top: 22px;">
-            <div>
-                <h3 style="margin-bottom: 14px;">Leve di Crescita</h3>
-                <div class="card" style="margin-bottom: 12px;">
-                    <h3 class="accent">1. Espansione Geografica</h3>
+                    <h3 class="ac-blue" style="margin-bottom:5px;">1 &mdash; Espansione Geografica</h3>
                     <p>Da Milano/Roma verso tutta Italia. Il modello digitale scala senza limiti fisici.</p>
                 </div>
-                <div class="card" style="margin-bottom: 12px;">
-                    <h3 class="accent">2. Espansione Verticale</h3>
+                <div class="card">
+                    <h3 class="ac-blue" style="margin-bottom:5px;">2 &mdash; Espansione Verticale</h3>
                     <p>Da BB/PL a sport di resistenza, CrossFit, arti marziali, fitness over 50.</p>
                 </div>
                 <div class="card">
-                    <h3 class="accent">3. Prodotti Digitali</h3>
+                    <h3 class="ac-blue" style="margin-bottom:5px;">3 &mdash; Prodotti Digitali</h3>
                     <p>Dashboard analytics, report automatizzati con AI, app mobile per tracking.</p>
                 </div>
             </div>
-            <div>
-                <h3 style="margin-bottom: 14px;">Perch&eacute; Scala</h3>
-                <div class="card card-dark" style="margin-bottom: 12px;">
-                    <h3>Asset-Light</h3>
+        </div>
+        <div>
+            <h3 style="margin-bottom:12px; color:var(--t3); font-size:0.78em; text-transform:uppercase; letter-spacing:0.07em;">Perch&eacute; Scala</h3>
+            <div style="display:flex; flex-direction:column; gap:10px;">
+                <div class="card card-dark">
+                    <h3 style="margin-bottom:5px;">Asset-Light</h3>
                     <p>Non possediamo laboratori n&eacute; studi medici. Coordiniamo. Costi variabili bassi, margini che crescono con il volume.</p>
                 </div>
-                <div class="card card-dark" style="margin-bottom: 12px;">
-                    <h3>Protocolli Replicabili</h3>
+                <div class="card card-dark">
+                    <h3 style="margin-bottom:5px;">Protocolli Replicabili</h3>
                     <p>SOP standardizzate per onboarding clienti, gestione medici, coordinamento. Ogni nuovo mercato = copy-paste + localizzazione.</p>
                 </div>
                 <div class="card card-dark">
-                    <h3>Referral Virale</h3>
+                    <h3 style="margin-bottom:5px;">Referral Virale</h3>
                     <p>Coach e atleti diventano ambasciatori naturali. Network effect integrato nel modello di business.</p>
                 </div>
             </div>
         </div>
-        <div class="slide-footer">
-            <span>Salute di Ferro &mdash; Confidenziale</span>
-            <span>14</span>
-        </div>
-    </section>
+    </div>
+    <div class="slide-footer">
+        <span>Salute di Ferro &mdash; Confidenziale</span>
+        <span>14 / 21</span>
+    </div>
+</section>
 
-    <!-- ==================== SLIDE 15: EVIDENZE CLINICHE ==================== -->
-    <section>
-        <span class="tag tag-red">EVIDENZE CLINICHE</span>
-        <h2>Perch&eacute; il Monitoraggio &Egrave; Vitale</h2>
-        <p>La letteratura scientifica &egrave; chiara: l&rsquo;uso non monitorato di sostanze ergogeniche &egrave; associato a danni cardiovascolari gravi e prevenibili.</p>
-        <div class="grid-2" style="margin-top: 20px;">
-            <div>
-                <div class="bar-h">
-                    <div class="bar-label">Rischio mortalit&agrave; AAS</div>
-                    <div class="bar-track"><div class="bar-fill" style="width: 78%; background: linear-gradient(90deg, #f87171, #dc2626);"></div></div>
-                    <div class="bar-val" style="color: #f87171;">2.81x</div>
-                </div>
-                <div class="bar-h">
-                    <div class="bar-label">Morte innaturale AAS</div>
-                    <div class="bar-track"><div class="bar-fill" style="width: 90%; background: linear-gradient(90deg, #fb923c, #ea580c);"></div></div>
-                    <div class="bar-val" style="color: #fb923c;">3.64x</div>
-                </div>
-                <div class="bar-h">
-                    <div class="bar-label">Prevalenza AAS gym EU</div>
-                    <div class="bar-track"><div class="bar-fill" style="width: 50%; background: linear-gradient(90deg, #fbbf24, #d97706);"></div></div>
-                    <div class="bar-val" style="color: #fbbf24;">30-50%</div>
-                </div>
-                <div class="bar-h">
-                    <div class="bar-label">Ipertensione ex-atleti</div>
-                    <div class="bar-track"><div class="bar-fill" style="width: 90%; background: linear-gradient(90deg, #a78bfa, #7c3aed);"></div></div>
-                    <div class="bar-val" style="color: #a78bfa;">90%</div>
-                </div>
-                <div class="source" style="margin-top: 10px;">
-                    Fonti: Horwitz et al. (2024), PMC; Frontiers in Cardiovascular Medicine (2025); HUDDLE Study; Sagoe et al., Annals of Epidemiology
-                </div>
+<!-- ══════════════════════════════════════════════════
+     SLIDE 15 — EVIDENZE CLINICHE
+══════════════════════════════════════════════════ -->
+<section>
+    <span class="tag tag-red">Evidenze Cliniche</span>
+    <h2>Perch&eacute; il Monitoraggio &Egrave; Vitale</h2>
+    <div class="rule"></div>
+    <p class="lead">La letteratura scientifica &egrave; chiara: l&rsquo;uso non monitorato di sostanze ergogeniche &egrave; associato a danni cardiovascolari gravi e prevenibili.</p>
+    <div class="g2" style="margin-top: 16px;">
+        <div>
+            <div class="bar-row">
+                <div class="bar-row-label">Rischio mortalit&agrave; AAS</div>
+                <div class="bar-track"><div class="bar-fill" style="width:78%; background:linear-gradient(90deg,var(--red),#FF6B6B);"></div></div>
+                <div class="bar-val" style="color:var(--red-2);">2.81x</div>
             </div>
-            <div>
-                <div class="card" style="margin-bottom: 14px;">
-                    <h3>Danno Cardiovascolare Documentato</h3>
-                    <p>L&rsquo;uso cronico di AAS causa ipertrofia ventricolare, fibrosi miocardica, aterosclerosi accelerata e morte cardiaca improvvisa. Meccanismi: stress ossidativo, disregolazione RAAS, segnalazione pro-apoptotica.</p>
-                    <div class="source">Fonte: MDPI Int. J. Mol. Sci. (2025); JAMA Network Open (2024); Circulation (2024)</div>
-                </div>
-                <div class="card">
-                    <h3>Biomarker Ematici per Atleti</h3>
-                    <p>I biomarker ematici forniscono una misura oggettiva e individualizzata di carico allenante, recovery e stato di salute, riducendo il rischio di infortuni e massimizzando la performance.</p>
-                    <div class="source">Fonte: PMC (2023), &ldquo;Blood-Based Biomarkers for Managing Workload in Athletes&rdquo;</div>
-                </div>
+            <div class="bar-row">
+                <div class="bar-row-label">Morte innaturale AAS</div>
+                <div class="bar-track"><div class="bar-fill" style="width:90%; background:linear-gradient(90deg,#FF6B35,#FF8C42);"></div></div>
+                <div class="bar-val" style="color:#FF8C42;">3.64x</div>
+            </div>
+            <div class="bar-row">
+                <div class="bar-row-label">Prevalenza AAS gym EU</div>
+                <div class="bar-track"><div class="bar-fill" style="width:50%; background:linear-gradient(90deg,var(--amber),var(--amber-2));"></div></div>
+                <div class="bar-val" style="color:var(--amber-2);">30&ndash;50%</div>
+            </div>
+            <div class="bar-row">
+                <div class="bar-row-label">Ipertensione ex-atleti</div>
+                <div class="bar-track"><div class="bar-fill" style="width:90%; background:linear-gradient(90deg,var(--purple),var(--purple-2));"></div></div>
+                <div class="bar-val" style="color:var(--purple-2);">90%</div>
+            </div>
+            <div class="source-note" style="margin-top:10px;">Fonti: Horwitz et al. (2024), PMC; Frontiers in Cardiovascular Medicine (2025); HUDDLE Study; Sagoe et al.</div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+            <div class="card">
+                <h3 style="margin-bottom:6px;">Danno Cardiovascolare Documentato</h3>
+                <p>L&rsquo;uso cronico di AAS causa ipertrofia ventricolare, fibrosi miocardica, aterosclerosi accelerata e morte cardiaca improvvisa.</p>
+                <div class="source-note">Fonte: MDPI Int. J. Mol. Sci. (2025); JAMA Network Open (2024); Circulation (2024)</div>
+            </div>
+            <div class="card">
+                <h3 style="margin-bottom:6px;">Biomarker Ematici per Atleti</h3>
+                <p>I biomarker ematici forniscono una misura oggettiva e individualizzata di carico allenante, recovery e stato di salute, riducendo il rischio di infortuni e massimizzando la performance.</p>
+                <div class="source-note">Fonte: PMC (2023), &ldquo;Blood-Based Biomarkers for Managing Workload in Athletes&rdquo;</div>
             </div>
         </div>
-        <div class="slide-footer">
-            <span>Salute di Ferro &mdash; Confidenziale</span>
-            <span>15</span>
-        </div>
-    </section>
+    </div>
+    <div class="slide-footer">
+        <span>Salute di Ferro &mdash; Confidenziale</span>
+        <span>15 / 21</span>
+    </div>
+</section>
 
-    <!-- ==================== SLIDE 16: I TRE PILASTRI DELLA VISIONE ==================== -->
-    <section>
-        <span class="tag tag-blue">VISIONE</span>
-        <h2>I Tre Pilastri della Visione</h2>
-        <div class="grid-3" style="margin-top: 30px;">
-            <div class="card card-highlight" style="text-align: center; padding: 35px 24px;">
-                <div class="stat">
-                    <div class="num" style="font-size: 3.5em;">1</div>
-                </div>
-                <h3 style="font-size: 1.5em; margin-bottom: 12px;">Struttura</h3>
-                <p style="max-width: 100%;">Processi solidi per risultati riproducibili. SOP per ogni fase del percorso, dalla lead alla retention.</p>
-            </div>
-            <div class="card card-highlight" style="text-align: center; padding: 35px 24px;">
-                <div class="stat">
-                    <div class="num" style="font-size: 3.5em;">2</div>
-                </div>
-                <h3 style="font-size: 1.5em; margin-bottom: 12px;">Dati</h3>
-                <p style="max-width: 100%;">Decisioni basate su evidenze oggettive. Ogni panel, ogni referto, ogni outcome &egrave; tracciato e analizzato.</p>
-            </div>
-            <div class="card card-highlight" style="text-align: center; padding: 35px 24px;">
-                <div class="stat">
-                    <div class="num" style="font-size: 3.5em;">3</div>
-                </div>
-                <h3 style="font-size: 1.5em; margin-bottom: 12px;">Chiarezza</h3>
-                <p style="max-width: 100%;">Informazioni comprensibili per atleti e professionisti. Trasparenza totale, nessun gergo inutile.</p>
-            </div>
+<!-- ══════════════════════════════════════════════════
+     SLIDE 16 — I TRE PILASTRI
+══════════════════════════════════════════════════ -->
+<section>
+    <span class="tag tag-blue">Visione</span>
+    <h2>I Tre Pilastri della Visione</h2>
+    <div class="rule"></div>
+    <div class="g3" style="margin-top: 26px;">
+        <div class="card card-glow" style="text-align:center; padding: 36px 22px;">
+            <div style="font-size:3.2em; font-weight:900; letter-spacing:-0.04em; background:linear-gradient(135deg,var(--blue-3),var(--t1)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; line-height:1; margin-bottom:16px;">1</div>
+            <h3 style="font-size:1.35em; margin-bottom:10px;">Struttura</h3>
+            <p style="max-width:100%;">Processi solidi per risultati riproducibili. SOP per ogni fase del percorso, dalla lead alla retention.</p>
         </div>
-        <div class="callout" style="margin-top: 30px; text-align: center; font-size: 1.15em;">
-            <strong>Obiettivo:</strong> Diventare il punto di riferimento #1 in Italia per l&rsquo;ottimizzazione della salute orientata alla performance.
+        <div class="card card-glow" style="text-align:center; padding: 36px 22px;">
+            <div style="font-size:3.2em; font-weight:900; letter-spacing:-0.04em; background:linear-gradient(135deg,var(--blue-3),var(--t1)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; line-height:1; margin-bottom:16px;">2</div>
+            <h3 style="font-size:1.35em; margin-bottom:10px;">Dati</h3>
+            <p style="max-width:100%;">Decisioni basate su evidenze oggettive. Ogni panel, ogni referto, ogni outcome &egrave; tracciato e analizzato.</p>
         </div>
-        <div class="slide-footer">
-            <span>Salute di Ferro &mdash; Confidenziale</span>
-            <span>16</span>
+        <div class="card card-glow" style="text-align:center; padding: 36px 22px;">
+            <div style="font-size:3.2em; font-weight:900; letter-spacing:-0.04em; background:linear-gradient(135deg,var(--blue-3),var(--t1)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; line-height:1; margin-bottom:16px;">3</div>
+            <h3 style="font-size:1.35em; margin-bottom:10px;">Chiarezza</h3>
+            <p style="max-width:100%;">Informazioni comprensibili per atleti e professionisti. Trasparenza totale, nessun gergo inutile.</p>
         </div>
-    </section>
+    </div>
+    <div class="callout callout-blue" style="margin-top: 26px; text-align:center; font-size:0.95em;">
+        <strong>Obiettivo:</strong> Diventare il punto di riferimento #1 in Italia per l&rsquo;ottimizzazione della salute orientata alla performance.
+    </div>
+    <div class="slide-footer">
+        <span>Salute di Ferro &mdash; Confidenziale</span>
+        <span>16 / 21</span>
+    </div>
+</section>
 
-    <!-- ==================== SLIDE 17: ROADMAP ==================== -->
-    <section>
-        <span class="tag tag-amber">ROADMAP</span>
-        <h2>Roadmap di Esecuzione</h2>
-        <div class="grid-4" style="margin-top: 22px;">
-            <div class="card" style="border-left: 3px solid #4ade80;">
-                <span class="tag tag-green" style="font-size: 0.65em;">Q2 2026</span>
-                <h3>Fase 1 &mdash; Lancio</h3>
-                <ul style="font-size: 0.85em;">
-                    <li>MVP piattaforma (CRM + booking)</li>
-                    <li>3-5 medici specialisti onboarded</li>
-                    <li>2-3 laboratori convenzionati</li>
-                    <li>Primi 50 clienti pilota</li>
-                    <li>Panel diagnostici v1</li>
-                </ul>
-            </div>
-            <div class="card" style="border-left: 3px solid #60a5fa;">
-                <span class="tag tag-blue" style="font-size: 0.65em;">Q3-Q4 2026</span>
-                <h3>Fase 2 &mdash; Traction</h3>
-                <ul style="font-size: 0.85em;">
-                    <li>200+ clienti attivi</li>
-                    <li>Lancio YEAH BUDDY e OLYMPIA</li>
-                    <li>10+ specialisti nella rete</li>
-                    <li>Referral program con coach</li>
-                    <li>Primi percorsi Iron Man</li>
-                </ul>
-            </div>
-            <div class="card" style="border-left: 3px solid #a78bfa;">
-                <span class="tag tag-purple" style="font-size: 0.65em;">2027 H1</span>
-                <h3>Fase 3 &mdash; Scala</h3>
-                <ul style="font-size: 0.85em;">
-                    <li>1.000+ clienti attivi</li>
-                    <li>Espansione nazionale</li>
-                    <li>App mobile v1</li>
-                    <li>Dashboard analytics cliente</li>
-                    <li>Percorsi Wonder Woman</li>
-                </ul>
-            </div>
-            <div class="card" style="border-left: 3px solid #fbbf24;">
-                <span class="tag tag-amber" style="font-size: 0.65em;">2027 H2+</span>
-                <h3>Fase 4 &mdash; Espansione</h3>
-                <ul style="font-size: 0.85em;">
-                    <li>3.000+ clienti attivi</li>
-                    <li>AI-powered report diagnostici</li>
-                    <li>Nuovi verticali sport</li>
-                    <li>Espansione Europa Sud</li>
-                    <li>Serie A funding</li>
-                </ul>
-            </div>
+<!-- ══════════════════════════════════════════════════
+     SLIDE 17 — ROADMAP
+══════════════════════════════════════════════════ -->
+<section>
+    <span class="tag tag-amber">Roadmap</span>
+    <h2>Roadmap di Esecuzione</h2>
+    <div class="rule"></div>
+    <div class="g4" style="margin-top: 20px;">
+        <div class="card ct-green">
+            <span class="tag tag-green" style="font-size:0.6em; margin-bottom:8px;">Q2 2026</span>
+            <h3 style="margin-bottom:8px;">Fase 1 &mdash; Lancio</h3>
+            <ul>
+                <li>MVP piattaforma (CRM + booking)</li>
+                <li>3&ndash;5 medici specialisti onboarded</li>
+                <li>2&ndash;3 laboratori convenzionati</li>
+                <li>Primi 50 clienti pilota</li>
+                <li>Panel diagnostici v1</li>
+            </ul>
         </div>
-        <div class="slide-footer">
-            <span>Salute di Ferro &mdash; Confidenziale</span>
-            <span>17</span>
+        <div class="card ct-blue">
+            <span class="tag tag-blue" style="font-size:0.6em; margin-bottom:8px;">Q3&ndash;Q4 2026</span>
+            <h3 style="margin-bottom:8px;">Fase 2 &mdash; Traction</h3>
+            <ul>
+                <li>200+ clienti attivi</li>
+                <li>Lancio YEAH BUDDY e OLYMPIA</li>
+                <li>10+ specialisti nella rete</li>
+                <li>Referral program con coach</li>
+                <li>Primi percorsi Iron Man</li>
+            </ul>
         </div>
-    </section>
+        <div class="card ct-purple">
+            <span class="tag tag-purple" style="font-size:0.6em; margin-bottom:8px;">2027 H1</span>
+            <h3 style="margin-bottom:8px;">Fase 3 &mdash; Scala</h3>
+            <ul>
+                <li>1.000+ clienti attivi</li>
+                <li>Espansione nazionale</li>
+                <li>App mobile v1</li>
+                <li>Dashboard analytics cliente</li>
+                <li>Percorsi Wonder Woman</li>
+            </ul>
+        </div>
+        <div class="card ct-amber">
+            <span class="tag tag-amber" style="font-size:0.6em; margin-bottom:8px;">2027 H2+</span>
+            <h3 style="margin-bottom:8px;">Fase 4 &mdash; Espansione</h3>
+            <ul>
+                <li>3.000+ clienti attivi</li>
+                <li>AI-powered report diagnostici</li>
+                <li>Nuovi verticali sport</li>
+                <li>Espansione Europa Sud</li>
+                <li>Serie A funding</li>
+            </ul>
+        </div>
+    </div>
+    <div class="slide-footer">
+        <span>Salute di Ferro &mdash; Confidenziale</span>
+        <span>17 / 21</span>
+    </div>
+</section>
 
-    <!-- ==================== SLIDE 18: TEAM (PLACEHOLDER) ==================== -->
-    <section>
-        <span class="tag tag-blue">TEAM</span>
-        <h2>Il Team</h2>
-        <div class="grid-2" style="margin-top: 24px; max-width: 800px;">
-            <div class="card" style="text-align: center; padding: 35px;">
-                <div style="width: 80px; height: 80px; border-radius: 50%; background: rgba(96,165,250,0.2); border: 2px solid #60a5fa; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 2em;">&#x1F9D1;&#x200D;&#x1F4BC;</div>
-                <h3 style="font-size: 1.3em;">[Nome Founder 1]</h3>
-                <p style="color: #60a5fa; max-width: 100%; font-size: 0.95em;">Co-Founder &amp; CEO</p>
-                <p style="font-size: 0.85em; margin-top: 8px; max-width: 100%;">Business, strategia, sales. Background in [...]</p>
-            </div>
-            <div class="card" style="text-align: center; padding: 35px;">
-                <div style="width: 80px; height: 80px; border-radius: 50%; background: rgba(96,165,250,0.2); border: 2px solid #60a5fa; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 2em;">&#x1F9D1;&#x200D;&#x1F4BC;</div>
-                <h3 style="font-size: 1.3em;">[Nome Founder 2]</h3>
-                <p style="color: #60a5fa; max-width: 100%; font-size: 0.95em;">Co-Founder &amp; COO</p>
-                <p style="font-size: 0.85em; margin-top: 8px; max-width: 100%;">Operations, network medico, coordinamento. Background in [...]</p>
-            </div>
+<!-- ══════════════════════════════════════════════════
+     SLIDE 18 — TEAM
+══════════════════════════════════════════════════ -->
+<section>
+    <span class="tag tag-blue">Team</span>
+    <h2>Il Team</h2>
+    <div class="rule"></div>
+    <div class="g2" style="margin-top: 22px; max-width: 780px;">
+        <div class="card card-glow" style="text-align:center; padding:32px 28px;">
+            <div style="width:72px; height:72px; border-radius:50%; background:rgba(99,102,241,0.15); border:1px solid var(--border-blue); margin:0 auto 14px; display:flex; align-items:center; justify-content:center; font-size:1.8em;">&#x1F9D1;&#x200D;&#x1F4BC;</div>
+            <h3 style="font-size:1.2em; margin-bottom:4px;">[Nome Founder 1]</h3>
+            <p style="color:var(--blue-2); font-size:0.85em; max-width:100%; margin-bottom:8px;">Co-Founder &amp; CEO</p>
+            <p style="font-size:0.82em; max-width:100%; color:var(--t3);">Business, strategia, sales. Background in [...]</p>
         </div>
-        <div class="callout" style="margin-top: 30px; max-width: 800px;">
-            <strong>Advisory Board:</strong> [Medici specialisti, advisor di settore, mentor &mdash; da completare]
+        <div class="card card-glow" style="text-align:center; padding:32px 28px;">
+            <div style="width:72px; height:72px; border-radius:50%; background:rgba(99,102,241,0.15); border:1px solid var(--border-blue); margin:0 auto 14px; display:flex; align-items:center; justify-content:center; font-size:1.8em;">&#x1F9D1;&#x200D;&#x1F4BC;</div>
+            <h3 style="font-size:1.2em; margin-bottom:4px;">[Nome Founder 2]</h3>
+            <p style="color:var(--blue-2); font-size:0.85em; max-width:100%; margin-bottom:8px;">Co-Founder &amp; COO</p>
+            <p style="font-size:0.82em; max-width:100%; color:var(--t3);">Operations, network medico, coordinamento. Background in [...]</p>
         </div>
-        <div class="slide-footer">
-            <span>Salute di Ferro &mdash; Confidenziale</span>
-            <span>18</span>
-        </div>
-    </section>
+    </div>
+    <div class="callout callout-blue" style="margin-top:26px; max-width:780px;">
+        <strong>Advisory Board:</strong> [Medici specialisti, advisor di settore, mentor &mdash; da completare]
+    </div>
+    <div class="slide-footer">
+        <span>Salute di Ferro &mdash; Confidenziale</span>
+        <span>18 / 21</span>
+    </div>
+</section>
 
-    <!-- ==================== SLIDE 19: THE ASK ==================== -->
-    <section>
-        <span class="tag tag-green">THE ASK</span>
-        <h2>Cosa Cerchiamo</h2>
-        <div class="grid-2" style="margin-top: 22px; max-width: 900px;">
-            <div class="card card-highlight" style="text-align: center; padding: 35px;">
-                <div class="stat">
-                    <div class="num">&euro;[X]K</div>
-                    <div class="label">Pre-Seed Round</div>
-                </div>
-                <p style="max-width: 100%; margin-top: 12px;">Per finanziare MVP, primi 6 mesi operativi, team iniziale e go-to-market</p>
+<!-- ══════════════════════════════════════════════════
+     SLIDE 19 — THE ASK
+══════════════════════════════════════════════════ -->
+<section>
+    <span class="tag tag-green">The Ask</span>
+    <h2>Cosa Cerchiamo</h2>
+    <div class="rule"></div>
+    <div class="g2" style="margin-top: 18px; max-width: 880px;">
+        <div class="card card-glow" style="text-align:center; padding:32px 24px;">
+            <div class="stat-label">Pre-Seed Round</div>
+            <div class="stat-num gb" style="margin:12px 0; font-size:3.2em;">&euro;[X]K</div>
+            <p style="max-width:100%; color:var(--t3);">Per finanziare MVP, primi 6 mesi operativi, team iniziale e go-to-market</p>
+        </div>
+        <div>
+            <h3 style="margin-bottom:14px; color:var(--t3); font-size:0.78em; text-transform:uppercase; letter-spacing:0.07em;">Allocazione Fondi</h3>
+            <div class="bar-row">
+                <div class="bar-row-label">Prodotto / Tech</div>
+                <div class="bar-track"><div class="bar-fill" style="width:40%; background:linear-gradient(90deg,var(--blue),var(--blue-2));"></div></div>
+                <div class="bar-val" style="color:var(--blue-2);">40%</div>
             </div>
-            <div>
-                <h3 style="margin-bottom: 14px;">Allocazione Fondi</h3>
-                <div class="bar-h">
-                    <div class="bar-label">Prodotto / Tech</div>
-                    <div class="bar-track"><div class="bar-fill" style="width: 40%; background: #60a5fa;"></div></div>
-                    <div class="bar-val">40%</div>
-                </div>
-                <div class="bar-h">
-                    <div class="bar-label">Sales &amp; Marketing</div>
-                    <div class="bar-track"><div class="bar-fill" style="width: 30%; background: #4ade80;"></div></div>
-                    <div class="bar-val">30%</div>
-                </div>
-                <div class="bar-h">
-                    <div class="bar-label">Operations</div>
-                    <div class="bar-track"><div class="bar-fill" style="width: 20%; background: #a78bfa;"></div></div>
-                    <div class="bar-val">20%</div>
-                </div>
-                <div class="bar-h">
-                    <div class="bar-label">Legale / Compliance</div>
-                    <div class="bar-track"><div class="bar-fill" style="width: 10%; background: #fbbf24;"></div></div>
-                    <div class="bar-val">10%</div>
-                </div>
+            <div class="bar-row">
+                <div class="bar-row-label">Sales &amp; Marketing</div>
+                <div class="bar-track"><div class="bar-fill" style="width:30%; background:linear-gradient(90deg,var(--green),var(--green-2));"></div></div>
+                <div class="bar-val" style="color:var(--green-2);">30%</div>
+            </div>
+            <div class="bar-row">
+                <div class="bar-row-label">Operations</div>
+                <div class="bar-track"><div class="bar-fill" style="width:20%; background:linear-gradient(90deg,var(--purple),var(--purple-2));"></div></div>
+                <div class="bar-val" style="color:var(--purple-2);">20%</div>
+            </div>
+            <div class="bar-row">
+                <div class="bar-row-label">Legale / Compliance</div>
+                <div class="bar-track"><div class="bar-fill" style="width:10%; background:linear-gradient(90deg,var(--amber),var(--amber-2));"></div></div>
+                <div class="bar-val" style="color:var(--amber-2);">10%</div>
             </div>
         </div>
-        <div class="callout callout-green" style="margin-top: 22px; max-width: 900px;">
-            <strong>Milestone chiave con questo round:</strong> 200+ clienti paganti, unit economics validata, pipeline medici &gt;10, pronto per seed round.
-        </div>
-        <div class="slide-footer">
-            <span>Salute di Ferro &mdash; Confidenziale</span>
-            <span>19</span>
-        </div>
-    </section>
+    </div>
+    <div class="callout callout-green" style="margin-top:18px; max-width:880px;">
+        <strong>Milestone chiave con questo round:</strong> 200+ clienti paganti, unit economics validata, pipeline medici &gt;10, pronto per seed round.
+    </div>
+    <div class="slide-footer">
+        <span>Salute di Ferro &mdash; Confidenziale</span>
+        <span>19 / 21</span>
+    </div>
+</section>
 
-    <!-- ==================== SLIDE 20: CLOSING ==================== -->
-    <section class="closing">
-        <h1 style="font-size: 3.5em; margin-bottom: 12px;">Salute di Ferro</h1>
-        <p style="font-size: 1.4em; color: #60a5fa; margin-bottom: 30px;">Performance. Salute. Longevit&agrave;.</p>
-        <div style="display: flex; gap: 24px; justify-content: center; margin-bottom: 35px;">
-            <div class="card card-highlight" style="min-width: 200px; text-align: center;">
-                <p><strong>Diagnostica Mirata</strong><br><span style="font-size: 0.85em; color: #94a3b8;">Panel specifici per atleti</span></p>
-            </div>
-            <div class="card card-highlight" style="min-width: 200px; text-align: center;">
-                <p><strong>Coordinamento</strong><br><span style="font-size: 0.85em; color: #94a3b8;">Guida in ogni fase</span></p>
-            </div>
-            <div class="card card-highlight" style="min-width: 200px; text-align: center;">
-                <p><strong>Longevit&agrave;</strong><br><span style="font-size: 0.85em; color: #94a3b8;">Risultati duraturi e misurabili</span></p>
-            </div>
+<!-- ══════════════════════════════════════════════════
+     SLIDE 20 — CLOSING
+══════════════════════════════════════════════════ -->
+<section class="closing">
+    <div style="font-size:0.72em; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--blue-2); margin-bottom:18px; display:flex; align-items:center; gap:10px; justify-content:center;">
+        <span style="display:block; width:26px; height:1px; background:var(--blue-2);"></span>
+        Salute di Ferro
+        <span style="display:block; width:26px; height:1px; background:var(--blue-2);"></span>
+    </div>
+    <h1 style="font-size:5.5em; letter-spacing:-0.05em; line-height:0.9; background:linear-gradient(135deg, var(--t1) 0%, var(--blue-3) 60%, var(--blue-2) 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:14px;">Performance.<br>Salute.<br>Longevit&agrave;.</h1>
+    <p style="font-size:1.05em; color:var(--t3); margin-bottom:32px; max-width:420px;">Un percorso strutturato, finalmente.</p>
+    <div style="display:flex; gap:0; justify-content:center; border:1px solid var(--border); border-radius:var(--r); overflow:hidden; background:var(--surface);">
+        <div style="padding:14px 28px; text-align:center; border-right:1px solid var(--border);">
+            <div style="font-size:0.62em; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--t4); margin-bottom:3px;">Diagnostica Mirata</div>
+            <div style="font-size:0.9em; font-weight:600; color:var(--t1);">Panel specifici per atleti</div>
         </div>
-        <p style="font-size: 1.15em; color: #cbd5e1;">Un percorso strutturato, finalmente.</p>
-        <p style="margin-top: 30px; color: #475569; font-size: 0.9em;">[email] &mdash; [telefono] &mdash; salutediferro.it</p>
-        <div class="slide-footer">
-            <span>Salute di Ferro &mdash; Confidenziale</span>
-            <span>20</span>
+        <div style="padding:14px 28px; text-align:center; border-right:1px solid var(--border);">
+            <div style="font-size:0.62em; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--t4); margin-bottom:3px;">Coordinamento</div>
+            <div style="font-size:0.9em; font-weight:600; color:var(--t1);">Guida in ogni fase</div>
         </div>
-    </section>
+        <div style="padding:14px 28px; text-align:center;">
+            <div style="font-size:0.62em; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--t4); margin-bottom:3px;">Longevit&agrave;</div>
+            <div style="font-size:0.9em; font-weight:600; color:var(--t1);">Risultati duraturi e misurabili</div>
+        </div>
+    </div>
+    <p style="margin-top:28px; color:var(--t4); font-size:0.85em;">[email] &mdash; [telefono] &mdash; salutediferro.it</p>
+    <div class="slide-footer">
+        <span>Salute di Ferro &mdash; Confidenziale</span>
+        <span>20 / 21</span>
+    </div>
+</section>
 
-    <!-- ==================== SLIDE 21: FONTI ==================== -->
-    <section>
-        <span class="tag tag-blue">APPENDICE</span>
-        <h2>Fonti e Riferimenti Scientifici</h2>
-        <div class="grid-2" style="margin-top: 12px;">
-            <div>
-                <h3 style="font-size: 1em; margin-bottom: 10px; color: #60a5fa;">Epidemiologia &amp; Rischio AAS</h3>
-                <ul style="font-size: 0.72em; color: #94a3b8; line-height: 1.8;">
-                    <li>Horwitz H. et al. (2024), &ldquo;Mortality Among Users of Anabolic Steroids&rdquo;, J. Internal Medicine &ndash; PMC</li>
-                    <li>Sagoe D. et al. (2014), &ldquo;The global epidemiology of AAS use: a meta-analysis&rdquo;, Annals of Epidemiology</li>
-                    <li>Frontiers in Cardiovasc. Med. (2025), &ldquo;Forensic approach in cases of AAS abuse and cardiovascular mortality&rdquo;</li>
-                    <li>JAMA Network Open (2024), &ldquo;Illicit Anabolic Steroid Use and Cardiovascular Status&rdquo;</li>
-                    <li>Circulation (2024), &ldquo;Cardiovascular Disease in AAS Users&rdquo;</li>
-                    <li>MDPI Int. J. Mol. Sci. (2025), &ldquo;Impact of AAS Abuse on the Cardiovascular System&rdquo;</li>
-                    <li>ScienceDirect (2025), &ldquo;Steroid and illicit drug abuse in health and fitness community: Systematic review&rdquo;</li>
-                    <li>Abrahin O. et al. (2024), &ldquo;Prevalence of AAS use among resistance training practitioners post-COVID&rdquo;, BMC Public Health</li>
-                </ul>
-                <h3 style="font-size: 1em; margin-top: 16px; margin-bottom: 10px; color: #60a5fa;">Screening &amp; Biomarker Atleti</h3>
-                <ul style="font-size: 0.72em; color: #94a3b8; line-height: 1.8;">
-                    <li>PMC (2024), &ldquo;Assessing athletes beyond routine screening: Incorporating essential factors&rdquo;</li>
-                    <li>PMC (2023), &ldquo;Blood-Based Biomarkers for Managing Workload in Athletes&rdquo;</li>
-                    <li>PMC (2023), &ldquo;Cardiovascular screening of master athletes: Master Athletes Screening Study&rdquo;</li>
-                </ul>
-            </div>
-            <div>
-                <h3 style="font-size: 1em; margin-bottom: 10px; color: #60a5fa;">Dati di Mercato</h3>
-                <ul style="font-size: 0.72em; color: #94a3b8; line-height: 1.8;">
-                    <li>Global Wellness Institute (2025), &ldquo;The Global Wellness Economy Hits $6.8 Trillion&rdquo;</li>
-                    <li>McKinsey (2024), &ldquo;Future of Wellness&rdquo; &ndash; $2 trillion global wellness market</li>
-                    <li>Global Wellness Summit (2026), &ldquo;10 Wellness Trends for 2026&rdquo;</li>
-                    <li>The Business Research Company (2025), &ldquo;TRT Market Size Report&rdquo;</li>
-                    <li>Technavio (2025), &ldquo;TRT Market to Grow by USD 461M (2025-2029)&rdquo;</li>
-                    <li>Statista (2025), &ldquo;Digital Health &ndash; Italy Market Forecast&rdquo; &ndash; $3.73B</li>
-                    <li>IMARC Group (2024), &ldquo;Italy Health and Fitness Club Market&rdquo; &ndash; $2.8B</li>
-                    <li>Market Research Future (2025), &ldquo;Italy Digital Healthcare Market&rdquo;</li>
-                    <li>EuropeActive / Deloitte, European Health &amp; Fitness Market Report</li>
-                    <li>Mordor Intelligence (2026), &ldquo;Longevity Market Share, Size &amp; Growth Outlook to 2031&rdquo;</li>
-                </ul>
-            </div>
+<!-- ══════════════════════════════════════════════════
+     SLIDE 21 — FONTI
+══════════════════════════════════════════════════ -->
+<section>
+    <span class="tag tag-blue">Appendice</span>
+    <h2>Fonti e Riferimenti Scientifici</h2>
+    <div class="rule"></div>
+    <div class="g2" style="margin-top: 10px;">
+        <div>
+            <h3 style="font-size:0.82em; margin-bottom:8px; color:var(--blue-2); text-transform:uppercase; letter-spacing:0.06em;">Epidemiologia &amp; Rischio AAS</h3>
+            <ul style="font-size:1em;">
+                <li style="font-size:0.7em; color:var(--t3); padding:2px 0 2px 14px;">Horwitz H. et al. (2024), &ldquo;Mortality Among Users of Anabolic Steroids&rdquo;, J. Internal Medicine &ndash; PMC</li>
+                <li style="font-size:0.7em; color:var(--t3); padding:2px 0 2px 14px;">Sagoe D. et al. (2014), &ldquo;The global epidemiology of AAS use: a meta-analysis&rdquo;, Annals of Epidemiology</li>
+                <li style="font-size:0.7em; color:var(--t3); padding:2px 0 2px 14px;">Frontiers in Cardiovasc. Med. (2025), &ldquo;Forensic approach in cases of AAS abuse and cardiovascular mortality&rdquo;</li>
+                <li style="font-size:0.7em; color:var(--t3); padding:2px 0 2px 14px;">JAMA Network Open (2024), &ldquo;Illicit Anabolic Steroid Use and Cardiovascular Status&rdquo;</li>
+                <li style="font-size:0.7em; color:var(--t3); padding:2px 0 2px 14px;">Circulation (2024), &ldquo;Cardiovascular Disease in AAS Users&rdquo;</li>
+                <li style="font-size:0.7em; color:var(--t3); padding:2px 0 2px 14px;">MDPI Int. J. Mol. Sci. (2025), &ldquo;Impact of AAS Abuse on the Cardiovascular System&rdquo;</li>
+                <li style="font-size:0.7em; color:var(--t3); padding:2px 0 2px 14px;">ScienceDirect (2025), &ldquo;Steroid and illicit drug abuse in health and fitness community: Systematic review&rdquo;</li>
+                <li style="font-size:0.7em; color:var(--t3); padding:2px 0 2px 14px;">Abrahin O. et al. (2024), &ldquo;Prevalence of AAS use among resistance training practitioners post-COVID&rdquo;, BMC Public Health</li>
+            </ul>
+            <h3 style="font-size:0.82em; margin-top:14px; margin-bottom:8px; color:var(--blue-2); text-transform:uppercase; letter-spacing:0.06em;">Screening &amp; Biomarker Atleti</h3>
+            <ul>
+                <li style="font-size:0.7em; color:var(--t3); padding:2px 0 2px 14px;">PMC (2024), &ldquo;Assessing athletes beyond routine screening: Incorporating essential factors&rdquo;</li>
+                <li style="font-size:0.7em; color:var(--t3); padding:2px 0 2px 14px;">PMC (2023), &ldquo;Blood-Based Biomarkers for Managing Workload in Athletes&rdquo;</li>
+                <li style="font-size:0.7em; color:var(--t3); padding:2px 0 2px 14px;">PMC (2023), &ldquo;Cardiovascular screening of master athletes: Master Athletes Screening Study&rdquo;</li>
+            </ul>
         </div>
-        <div class="slide-footer">
-            <span>Salute di Ferro &mdash; Confidenziale</span>
-            <span>21</span>
+        <div>
+            <h3 style="font-size:0.82em; margin-bottom:8px; color:var(--blue-2); text-transform:uppercase; letter-spacing:0.06em;">Dati di Mercato</h3>
+            <ul>
+                <li style="font-size:0.7em; color:var(--t3); padding:2px 0 2px 14px;">Global Wellness Institute (2025), &ldquo;The Global Wellness Economy Hits $6.8 Trillion&rdquo;</li>
+                <li style="font-size:0.7em; color:var(--t3); padding:2px 0 2px 14px;">McKinsey (2024), &ldquo;Future of Wellness&rdquo; &ndash; $2 trillion global wellness market</li>
+                <li style="font-size:0.7em; color:var(--t3); padding:2px 0 2px 14px;">Global Wellness Summit (2026), &ldquo;10 Wellness Trends for 2026&rdquo;</li>
+                <li style="font-size:0.7em; color:var(--t3); padding:2px 0 2px 14px;">The Business Research Company (2025), &ldquo;TRT Market Size Report&rdquo;</li>
+                <li style="font-size:0.7em; color:var(--t3); padding:2px 0 2px 14px;">Technavio (2025), &ldquo;TRT Market to Grow by USD 461M (2025&ndash;2029)&rdquo;</li>
+                <li style="font-size:0.7em; color:var(--t3); padding:2px 0 2px 14px;">Statista (2025), &ldquo;Digital Health &ndash; Italy Market Forecast&rdquo; &ndash; $3.73B</li>
+                <li style="font-size:0.7em; color:var(--t3); padding:2px 0 2px 14px;">IMARC Group (2024), &ldquo;Italy Health and Fitness Club Market&rdquo; &ndash; $2.8B</li>
+                <li style="font-size:0.7em; color:var(--t3); padding:2px 0 2px 14px;">Market Research Future (2025), &ldquo;Italy Digital Healthcare Market&rdquo;</li>
+                <li style="font-size:0.7em; color:var(--t3); padding:2px 0 2px 14px;">EuropeActive / Deloitte, European Health &amp; Fitness Market Report</li>
+                <li style="font-size:0.7em; color:var(--t3); padding:2px 0 2px 14px;">Mordor Intelligence (2026), &ldquo;Longevity Market Share, Size &amp; Growth Outlook to 2031&rdquo;</li>
+            </ul>
         </div>
-    </section>
+    </div>
+    <div class="slide-footer">
+        <span>Salute di Ferro &mdash; Confidenziale</span>
+        <span>21 / 21</span>
+    </div>
+</section>
 
 </body>
 </html>
