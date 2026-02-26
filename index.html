@@ -1478,5 +1478,28 @@
     </div>
 </section>
 
+
+<script>
+    const slides = Array.from(document.querySelectorAll('section'));
+
+    function getCurrentIndex() {
+        return Math.round(window.scrollY / window.innerHeight);
+    }
+
+    function goTo(index) {
+        const i = Math.max(0, Math.min(slides.length - 1, index));
+        slides[i].scrollIntoView({ behavior: 'smooth' });
+    }
+
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
+            e.preventDefault();
+            goTo(getCurrentIndex() + 1);
+        } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft' || e.key === 'PageUp') {
+            e.preventDefault();
+            goTo(getCurrentIndex() - 1);
+        }
+    });
+</script>
 </body>
 </html>
